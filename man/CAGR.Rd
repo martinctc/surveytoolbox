@@ -7,6 +7,8 @@
 CAGR(value.beginning, value.ending, number.of.periods)
 }
 \description{
-Calculates CAGR 
+Calculates CAGR
+}
+\seealso{
 http://www.investopedia.com/terms/c/cagr.asp
 }

@@ -1,7 +1,8 @@
 #' CAGR Calculator
 #' 
 #' Calculates CAGR 
-#' http://www.investopedia.com/terms/c/cagr.asp
+#' 
+#' @seealso http://www.investopedia.com/terms/c/cagr.asp
 #' 
 #' @export
 CAGR <- function(value.beginning, value.ending, number.of.periods){
