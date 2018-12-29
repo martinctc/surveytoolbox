@@ -2,6 +2,7 @@
 #' Pipe optimised
 #' @param expand Add number to manually expand clipboard size
 #' @param quietly Set this to TRUE to not print data frame on console
+#' @export
 copy_df <-function(x,row.names=FALSE,col.names=TRUE,expand="",quietly=FALSE,...) {
   expand_x <- stringr::str_remove_all(expand,"-") # For backward compatibility
   if(expand==""){

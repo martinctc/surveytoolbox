@@ -2,8 +2,7 @@
 % Please edit documentation in R/sav_to_rds.R
 \name{sav_to_rds}
 \alias{sav_to_rds}
-\title{Serialise a SPSS file to RDS
-Old file name is retained and saved in the same location as RDS if export is unspecified}
+\title{Serialise a SPSS file to RDS}
 \usage{
 sav_to_rds(import, export = "")
 }
@@ -14,6 +13,8 @@ sav_to_rds(import, export = "")
 Default is to use same name as .SAV file}
 }
 \description{
-Serialise a SPSS file to RDS
 Old file name is retained and saved in the same location as RDS if export is unspecified
+}
+\examples{
+sav_to_rds("Data/Data File.sav")
 }
