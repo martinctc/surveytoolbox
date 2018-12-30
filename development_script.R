@@ -2,10 +2,12 @@
 # install.packages("rstudioapi")
 rstudioapi::isAvailable("0.99.149")
 
+#' Load these packages in first
 library(tidyverse)
 library(roxygen2)
 library(devtools)
 
+#' Run these three functions to build up the package
 build()
 install()
 document()
