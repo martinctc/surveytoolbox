@@ -7,18 +7,20 @@ library(tidyverse)
 library(roxygen2)
 library(devtools)
 
+roxygen2::roxygenise()
 #' Run these three functions to build up the package
 build()
 install()
 document()
 
 devtools::build_manual()
-devtools::check(manual=TRUE)
+devtools::check(manual=TRUE) # check whether everything is there
 
-install("../surveytools")
+# install("../surveytools")
+# install("../textworks")
 library(surveytools)
 
-roxygen2::roxygenise()
+
 
 
 #### Create PDF Manual ####
