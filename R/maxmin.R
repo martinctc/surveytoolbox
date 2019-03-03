@@ -1,27 +1,24 @@
 #' Max-Min Scaling Function
 #'
-#' This function allows you to scale vectors or an entire data frame using the max-min scaling method,
-#' always returning a data frame. 
+#' This function allows you to scale vectors or an entire data frame using the max-min scaling method
+#' A numeric vector is always returned.
 #' @param x Pass a vector or the required columns of a data frame through this argument.
 #' @keywords max-min
 #' @export
 #' @examples
 #' rand.data <-cbind(sample(1000,234:697),sample(1000,234:697)) %>% as.data.frame()
-#' maxmin(rand.data)
+#' rand.data %>% mutate_all(~maxmin(.))
 #' 
-#' rand.data <-sample(1000,234:677)
-#' maxmin(rand.data)
-
+#' sample(1000,234:677) %>% maxmin()
+#' 
+#' iris %>% mutate_at(vars(Petal.Length),~maxmin(.))
+#' maxmin(iris$Petal.Length)
+#' @export
 maxmin <- function(x){
-  if(is.vector(x)==TRUE){
-    maxs <- max(x)
-    mins <- min(x)
-    scale(x,center=mins,scale=maxs-mins) %>%
-      as.data.frame()
-  } else {
-    maxs <- apply(x, 2,max)
-    mins <- apply(x, 2,min)
-    scale(x, center = mins, scale = maxs - mins) %>%
-      as.data.frame()    
-  }
+    if(any(is.na(x))){
+      warning("Warning: vector contains missing values. Those values will return as NA.")
+    }
+    maxs <- max(x, na.rm = TRUE)
+    mins <- min(x, na.rm = TRUE)
+    as.numeric(scale(x,center=mins,scale=maxs-mins))
 }
