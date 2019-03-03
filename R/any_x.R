@@ -1,5 +1,10 @@
 #' Function that returns TRUE/FALSE if value exists in x, but returns NA if x consists entirely of NAs
+#' A more nuanced response is returned compared to any(x %in% value).
+#' Has useful applications in understanding a set of categorical variables belonging to a single question.
+#' E.g. A question on brand usage across 10 product types to understand 'any' usage of a brand x.
 #' 
+#' @param x Vector of values to test.
+#' @param value Value to test whether it exists in x. NA is returned if none exists at all. 
 #' @examples
 #' any_x(c(1,0,1),1) # TRUE
 #' any_x(c(1,NA,1),1) # TRUE
