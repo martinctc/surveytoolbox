@@ -10,14 +10,16 @@ maxmin(x)
 \item{x}{Pass a vector or the required columns of a data frame through this argument.}
 }
 \description{
-This function allows you to scale vectors or an entire data frame using the max-min scaling method,
-always returning a data frame.
+This function allows you to scale vectors or an entire data frame using the max-min scaling method
+A numeric vector is always returned.
 }
 \examples{
 rand.data <-cbind(sample(1000,234:697),sample(1000,234:697)) \%>\% as.data.frame()
-maxmin(rand.data)
+rand.data \%>\% mutate_all(~maxmin(.))
 
-rand.data <-sample(1000,234:677)
-maxmin(rand.data)
+sample(1000,234:677) \%>\% maxmin()
+
+iris \%>\% mutate_at(vars(Petal.Length),~maxmin(.))
+maxmin(iris$Petal.Length)
 }
 \keyword{max-min}
