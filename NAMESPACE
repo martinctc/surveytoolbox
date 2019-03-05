@@ -3,6 +3,7 @@
 export(CAGR)
 export(any_x)
 export(append_to_list)
+export(as_percent)
 export(box_it)
 export(categorise)
 export(char_to_lab)
