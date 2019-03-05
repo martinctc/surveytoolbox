@@ -14,6 +14,4 @@ Convert a numeric into a quantile categorical variable, labelled by lower and up
 }
 \examples{
 labelled_quantile(c(1,1,1,1,2,3,5,5,6))
-[1] "1.2_TO_2.8" "1.2_TO_2.8" "1.2_TO_2.8" "1.2_TO_2.8" "2.8_TO_5"   "5_TO_6"     "6_UP"       "6_UP"      
-[9] "6_UP"     
 }

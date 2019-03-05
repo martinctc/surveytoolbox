@@ -13,7 +13,6 @@
 #' @examples 
 #' data <-c(5, 4, 3, 2, 1)
 #'likert_convert(data,5,0,10,0) #5-point scale to 10-point scale
-#'[1] 10  8  6  4  2
 #'@export
 likert_convert <- function(x, top.x, bot.x, top.y, bot.y){
   y <- ((top.y-bot.y)*(x-bot.x)/(top.x-bot.x))+bot.y

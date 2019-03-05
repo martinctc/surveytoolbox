@@ -7,7 +7,10 @@
 #' Leave blank to include everything
 #' 
 #' @examples 
-#' data.frame(a=c(1,2,4,5,6,7,8),b=c(244,333,434,453,123,123,435)) %>% superspread_fill(8,"a","b")
+#' library(dplyr)
+#' library(magrittr)
+#' data.frame(a=c(1,2,4,5,6,7,8),b=c(244,333,434,453,123,123,435)) %>%
+#'  superspread_fill(8,"a","b")
 #' 
 #' @export
 superspread_fill <- function(df,tcol,select_helpers=everything(),target_col){

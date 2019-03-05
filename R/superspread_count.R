@@ -6,6 +6,8 @@
 #' Leave blank to include everything
 #' 
 #' @examples
+#' library(dplyr)
+#' library(magrittr)
 #' df <- data.frame(x=sample(1:50,1000,replace=TRUE))
 #' superspread_count(df,50)
 #' 

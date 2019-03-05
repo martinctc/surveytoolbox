@@ -23,7 +23,6 @@ Use the `top` and `bottom` arguments to specify the valid range of the scale.
 \examples{
 data <-c(5, 4, 3, 2, 6)
 likert_reverse(data, 6, 0)
-[1] 1 2 3 4 0
 }
 \keyword{likert}
 \keyword{scale}

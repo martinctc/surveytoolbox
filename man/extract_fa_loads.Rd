@@ -13,7 +13,7 @@ extract_fa_loads(fa_object)
 Function to create a loadings file from the factanal() output
 }
 \examples{
-fa_output <- factanal(drop_na(psych::bfi), factors = 6)
+fa_output <- factanal(tidyr::drop_na(psych::bfi), factors = 6)
 extract_fa_loads(fa_output)
 }
 \keyword{analysis}

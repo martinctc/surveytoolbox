@@ -2,7 +2,8 @@
 % Please edit documentation in R/categorise.R
 \name{categorise}
 \alias{categorise}
-\title{Convert numeric variable into categorical variable}
+\title{Convert numeric variable into categorical variable
+Essentially a wrapper around the cut() function}
 \usage{
 categorise(x, breaks)
 }
@@ -12,8 +13,9 @@ categorise(x, breaks)
 \item{break}{points for the categories. Both the top and bottom breaks must be provided.}
 }
 \description{
+Convert numeric variable into categorical variable
 Essentially a wrapper around the cut() function
 }
 \examples{
-seq(10) \%>\% categorise(breaks=c(0,3,10))
+categorise(seq(10),breaks=c(0,3,10))
 }

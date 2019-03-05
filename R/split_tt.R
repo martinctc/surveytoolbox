@@ -10,7 +10,7 @@
 #'
 #'dim(x.train)
 #'dim(x.test)
-
+#'@export
 
 split_tt <-function(x, part){
   rowz <- nrow(x)
@@ -18,10 +18,3 @@ split_tt <-function(x, part){
   output <-list("train"=x[samp,],"test"=x[-samp,])
   output
 }
-
-#'x <-as.data.frame(matrix(1:5000,250,20))
-#'x.train <- split.tt(x,.7)$train
-#'x.test <- split.tt(x,.7)$test
-#'
-#'dim(x.train)
-#'dim(x.test)

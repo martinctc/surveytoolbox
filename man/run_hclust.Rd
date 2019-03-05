@@ -17,5 +17,7 @@ run_hclust(x, method = "complete", dmeth = "euclidean")
 A wrapper function to run hierarchical clustering
 }
 \examples{
+library(magrittr)
+library(dplyr)
 iris \%>\% select(-Species) \%>\% run_hclust()
 }

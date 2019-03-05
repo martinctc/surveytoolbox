@@ -15,6 +15,3 @@ Default is to use same name as .SAV file}
 \description{
 Old file name is retained and saved in the same location as RDS if export is unspecified
 }
-\examples{
-sav_to_rds("Data/Data File.sav")
-}

@@ -16,11 +16,13 @@ document()
 devtools::build_manual()
 devtools::check(manual=TRUE) # check whether everything is there
 
+# Run this to build and check in one line
+devtools::check(document = TRUE, manual=TRUE)
+
+
 # install("../surveytools")
 # install("../textworks")
 library(surveytools)
-
-
 
 
 #### Create PDF Manual ####

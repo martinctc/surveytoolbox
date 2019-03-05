@@ -27,7 +27,6 @@ The scale "dimensions" are specified in the function argument, and the function 
 \examples{
 data <-c(5, 4, 3, 2, 1)
 likert_convert(data,5,0,10,0) #5-point scale to 10-point scale
-[1] 10  8  6  4  2
 }
 \keyword{likert}
 \keyword{scale}

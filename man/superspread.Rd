@@ -21,6 +21,8 @@ tcol refers to the number of columns to create.
 Version with select incorporated
 }
 \examples{
+library(dplyr)
+library(magrittr)
 df <- data.frame(x=sample(1:50,1000,replace=TRUE))
 superspread(df,50)
 }

@@ -2,8 +2,7 @@
 #' @param x Vector, column, or numeric variable to be passed through 
 #' @examples
 #' labelled_quantile(c(1,1,1,1,2,3,5,5,6))
-#' [1] "1.2_TO_2.8" "1.2_TO_2.8" "1.2_TO_2.8" "1.2_TO_2.8" "2.8_TO_5"   "5_TO_6"     "6_UP"       "6_UP"      
-#' [9] "6_UP"     
+#' @export
 labelled_quantile <- function(x){
   pt1 <- quantile(x, probs = seq(0, 1, by = 0.2), type = 7)
   pt2 <- unique(as.data.frame(pt1), fromLast = TRUE)

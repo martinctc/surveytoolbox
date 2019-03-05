@@ -18,6 +18,8 @@ Leave blank to include everything}
 Convert single-code column(s) into "multiple choice" formats, filling data with count rather than 1s
 }
 \examples{
+library(dplyr)
+library(magrittr)
 df <- data.frame(x=sample(1:50,1000,replace=TRUE))
 superspread_count(df,50)
 

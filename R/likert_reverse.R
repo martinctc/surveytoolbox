@@ -11,7 +11,7 @@
 #' @examples 
 #' data <-c(5, 4, 3, 2, 6)
 #' likert_reverse(data, 6, 0)
-#' [1] 1 2 3 4 0
+#' @export
 likert_reverse <- function(x,top,bottom){
   total <-top+bottom
   x <- total-x

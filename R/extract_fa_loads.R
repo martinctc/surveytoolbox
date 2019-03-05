@@ -3,7 +3,7 @@
 #' @param fa_object factanal() model
 #' @keywords factor analysis
 #' @examples 
-#' fa_output <- factanal(drop_na(psych::bfi), factors = 6)
+#' fa_output <- factanal(tidyr::drop_na(psych::bfi), factors = 6)
 #' extract_fa_loads(fa_output)
 #' @export
 extract_fa_loads <-function(fa_object){
