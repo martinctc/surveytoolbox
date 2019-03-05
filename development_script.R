@@ -3,9 +3,7 @@
 rstudioapi::isAvailable("0.99.149")
 
 #' Load these packages in first
-library(tidyverse)
-library(roxygen2)
-library(devtools)
+ 
 
 roxygen2::roxygenise()
 #' Run these three functions to build up the package
