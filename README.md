@@ -21,3 +21,5 @@ There are broadly several groups of functions that you can find in this package:
 ---
 
 This package is currently still under development, so it does come with a health advice: if you do wish to use them - have a check and run through the examples before assimilating them into your analysis. 
+
+Note: Previously named 'surveytools', but now renamed to 'surveytoolbox' avoid confusion with another similar package of the same name (8th March 2019).
