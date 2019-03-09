@@ -1,5 +1,7 @@
 #' Copy a data frame to clipboard for pasting in Excel
 #' Pipe optimised
+#' Accompanies read_df() as a tool for ad-hoc analysis, which reads a data table copied from Excel into R.
+#'
 #' @param expand Add number to manually expand clipboard size
 #' @param quietly Set this to TRUE to not print data frame on console
 #' @export

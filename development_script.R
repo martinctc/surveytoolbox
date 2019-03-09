@@ -3,10 +3,9 @@
 rstudioapi::isAvailable("0.99.149")
 
 #' Load these packages in first
-library(tidyverse) 
+library(tidyverse)
 library(devtools)
 library(roxygen2)
-
 
 roxygen2::roxygenise()
 #' Run these three functions to build up the package
@@ -16,6 +15,7 @@ document()
 
 devtools::build_manual()
 devtools::check(manual=TRUE) # check whether everything is there
+devtools::check()
 
 # Run this to build and check in one line
 devtools::check(document = TRUE, manual=TRUE)
