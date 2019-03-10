@@ -2,25 +2,35 @@
 % Please edit documentation in R/superspread_count.R
 \name{superspread_count}
 \alias{superspread_count}
-\title{Convert single-code column(s) into "multiple choice" formats, filling data with count rather than 1s}
+\title{Convert single-code column(s) into "multiple choice" formats, filling data with sum of counts.
+Counts the number of occurrences per row in a number of categorical variables.}
 \usage{
-superspread_count(df, tcol, select_helpers = everything())
+superspread_count(df, select_helpers = everything())
 }
 \arguments{
 \item{df}{Data frame to apply function to.}
-
-\item{tcol}{Number of columns to create}
 
 \item{select_helpers}{Use dplyr select helpers to apply function only to required columns. 
 Leave blank to include everything}
 }
 \description{
-Convert single-code column(s) into "multiple choice" formats, filling data with count rather than 1s
+Convert single-code column(s) into "multiple choice" formats, filling data with sum of counts.
+Counts the number of occurrences per row in a number of categorical variables.
 }
 \examples{
+\dontrun{
+library(data.table)
 library(dplyr)
-library(magrittr)
-df <- data.frame(x=sample(1:50,1000,replace=TRUE))
-superspread_count(df,50)
+dt <- data.table(id = 1:10000,
+                 cat1 = sample(letters[1:3],10000,replace = TRUE),
+                 cat2 = sample(letters[1:4],10000,replace = TRUE),
+                 cat3 = sample(letters[1:5],10000,replace = TRUE))
+dt <- as.data.table(dt)
+superspread_count(df = dt, select_helpers = contains("cat"))
+}
 
 }
+\seealso{
+Other superspread functions: \code{\link{superspread}}
+}
+\concept{superspread functions}

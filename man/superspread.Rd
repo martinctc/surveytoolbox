@@ -27,7 +27,12 @@ dt <- data.table(id = 1:10000,
                  cat1 = sample(letters[1:3],10000,replace = TRUE),
                  cat2 = sample(letters[1:4],10000,replace = TRUE),
                  cat3 = sample(letters[1:5],10000,replace = TRUE))
+dt <- as.data.table(dt)
 superspread(df = dt, select_helpers = contains("cat"))
 }
 
 }
+\seealso{
+Other superspread functions: \code{\link{superspread_count}}
+}
+\concept{superspread functions}

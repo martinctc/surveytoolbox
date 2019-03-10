@@ -5,7 +5,7 @@
 #' @param df Data frame containing the multiple categorical variables.
 #' @param select_helpers Uses dplyr-style select functions to select multiple variables. 
 #' Use everything() to select all variables. These variables must all be character type.
-#' 
+#' @family superspread functions
 #' @import dplyr
 #' 
 #' @examples 
@@ -16,6 +16,7 @@
 #'                  cat1 = sample(letters[1:3],10000,replace = TRUE),
 #'                  cat2 = sample(letters[1:4],10000,replace = TRUE),
 #'                  cat3 = sample(letters[1:5],10000,replace = TRUE))
+#' dt <- as.data.table(dt)
 #' superspread(df = dt, select_helpers = contains("cat"))
 #' }
 #' 

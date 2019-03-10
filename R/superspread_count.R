@@ -1,28 +1,32 @@
-#' Convert single-code column(s) into "multiple choice" formats, filling data with count rather than 1s
+#' Convert single-code column(s) into "multiple choice" formats, filling data with sum of counts.
+#' Counts the number of occurrences per row in a number of categorical variables.
 #' 
 #' @param df Data frame to apply function to.
-#' @param tcol Number of columns to create
 #' @param select_helpers Use dplyr select helpers to apply function only to required columns. 
 #' Leave blank to include everything
-#' 
+#' @family superspread functions
+#' @import dplyr
 #' @examples
+#' \dontrun{
+#' library(data.table)
 #' library(dplyr)
-#' library(magrittr)
-#' df <- data.frame(x=sample(1:50,1000,replace=TRUE))
-#' superspread_count(df,50)
+#' dt <- data.table(id = 1:10000,
+#'                  cat1 = sample(letters[1:3],10000,replace = TRUE),
+#'                  cat2 = sample(letters[1:4],10000,replace = TRUE),
+#'                  cat3 = sample(letters[1:5],10000,replace = TRUE))
+#' dt <- as.data.table(dt)
+#' superspread_count(df = dt, select_helpers = contains("cat"))
+#' }
 #' 
 #' @export
-superspread_count <- function(df,tcol,select_helpers=everything()){  
-  df_original <- df
-  df <- select(df,select_helpers)
+superspread_count <- function(df, select_helpers = everything()){
+  df <- data.table(df)
+  input_vars_tb <- dplyr::select(df, select_helpers)
+  new_dummy_labs <- unique(as.vector(as.matrix(input_vars_tb)))
   
-  frameNA <-matrix(NA,nrow(df),tcol) %>% as.data.frame()
-  names(frameNA) <-seq(1,tcol)
-  for (i in 1:tcol){
-    frameNA[,i] <- as.numeric(apply(df, 1, function(x) ifelse(i %in% x, sum(i==x,na.rm = TRUE), 0))) # count if 'column value' exists in the matrix
-  }
-  
-  names(frameNA) <- paste0("x",names(frameNA))
-  
-  cbind(df_original,frameNA)
+  dt %>%
+    .[,(new_dummy_labs) := lapply(new_dummy_labs,
+                                  function(x) purrr::reduce(purrr::map(as.list(input_vars_tb), ~.==x),
+                                                            `+`))] %>%
+    dplyr::as_tibble()
 }
