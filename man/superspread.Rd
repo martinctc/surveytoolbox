@@ -2,27 +2,32 @@
 % Please edit documentation in R/superspread.R
 \name{superspread}
 \alias{superspread}
-\title{Convert single-code column(s) into "multiple choice" formats - fill data with 1s}
+\title{Creates dummy variables from multiple categorical variables.
+Uses data.table() for speed (enhanced from the previous version)
+Uses dplyr select() special functions to select categorical variables.}
 \usage{
-superspread(df, tcol, select_helpers = everything())
+superspread(df, select_helpers)
 }
 \arguments{
-\item{df}{Data frame to apply function to.}
+\item{df}{Data frame containing the multiple categorical variables.}
 
-\item{tcol}{Number of columns to create}
-
-\item{select_helpers}{Use dplyr select helpers to apply function only to required columns. 
-Leave blank to include everything}
+\item{select_helpers}{Uses dplyr-style select functions to select multiple variables. 
+Use everything() to select all variables. These variables must all be character type.}
 }
 \description{
-This function was orignally used in the context of a 'Select Any' question, where the outputs were created such that each 'cell' value represents the statement, rather than having the columns represent the statements. 
-tcol refers to the number of columns to create. 
-'Cell' values must be in numeric. 
-Version with select incorporated
+Creates dummy variables from multiple categorical variables.
+Uses data.table() for speed (enhanced from the previous version)
+Uses dplyr select() special functions to select categorical variables.
 }
 \examples{
+\dontrun{
+library(data.table)
 library(dplyr)
-library(magrittr)
-df <- data.frame(x=sample(1:50,1000,replace=TRUE))
-superspread(df,50)
+dt <- data.table(id = 1:10000,
+                 cat1 = sample(letters[1:3],10000,replace = TRUE),
+                 cat2 = sample(letters[1:4],10000,replace = TRUE),
+                 cat3 = sample(letters[1:5],10000,replace = TRUE))
+superspread(df = dt, select_helpers = contains("cat"))
+}
+
 }

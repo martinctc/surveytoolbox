@@ -1,28 +1,41 @@
-#' Convert single-code column(s) into "multiple choice" formats - fill data with 1s
+#' Creates dummy variables from multiple categorical variables.
+#' Uses data.table() for speed (enhanced from the previous version)
+#' Uses dplyr select() special functions to select categorical variables.
 #' 
-#' This function was orignally used in the context of a 'Select Any' question, where the outputs were created such that each 'cell' value represents the statement, rather than having the columns represent the statements. 
-#' tcol refers to the number of columns to create. 
-#' 'Cell' values must be in numeric. 
-#' Version with select incorporated                                    
+#' @param df Data frame containing the multiple categorical variables.
+#' @param select_helpers Uses dplyr-style select functions to select multiple variables. 
+#' Use everything() to select all variables. These variables must all be character type.
 #' 
-#' @param df Data frame to apply function to.
-#' @param tcol Number of columns to create
-#' @param select_helpers Use dplyr select helpers to apply function only to required columns. 
-#' Leave blank to include everything
+#' @import dplyr
 #' 
-#' @examples
+#' @examples 
+#' \dontrun{
+#' library(data.table)
 #' library(dplyr)
-#' library(magrittr)
-#' df <- data.frame(x=sample(1:50,1000,replace=TRUE))
-#' superspread(df,50)
+#' dt <- data.table(id = 1:10000,
+#'                  cat1 = sample(letters[1:3],10000,replace = TRUE),
+#'                  cat2 = sample(letters[1:4],10000,replace = TRUE),
+#'                  cat3 = sample(letters[1:5],10000,replace = TRUE))
+#' superspread(df = dt, select_helpers = contains("cat"))
+#' }
+#' 
 #' @export
-superspread <- function(df,tcol,select_helpers=everything()){
-  df_original <- df
-  df <- dplyr::select(df,select_helpers)
-  frameNA <-matrix(NA,nrow(df),tcol) %>% as.data.frame()
-  names(frameNA) <-seq(1,tcol)
-  for (i in 1:tcol){
-    frameNA[,i] <- as.numeric(apply(df, 1, function(x) ifelse(i %in% x, 1, 0)))
+superspread <- function(df,select_helpers){
+  df <- data.table(df)
+  input_vars_tb <- dplyr::select(df, select_helpers)
+  new_dummy_labs <- unique(as.vector(as.matrix(input_vars_tb)))
+  
+  pairwise_any <- function(var1,var2){
+    if(length(var1)!=length(var2)){
+      stop("Vectors are of different lengths!")
+    } else {
+      sapply(1:length(var1),function(x) any(var1[x],var2[x]))
+    }
   }
-  cbind(df_original,frameNA)
-}    
+  
+  df %>%
+    .[,(new_dummy_labs) := lapply(new_dummy_labs,
+                                 function(x) purrr::reduce(purrr::map(as.list(input_vars_tb),~. %in% x),
+                                                           pairwise_any))] %>%
+    dplyr::as_tibble()
+}
