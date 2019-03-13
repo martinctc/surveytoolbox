@@ -1,6 +1,9 @@
 # surveytoolbox
 A R package containing useful support functions for survey analysis.
-Currently under development! (29 Dec 2018)
+Currently under development! 
+(First created 29 Dec 2018)
+
+![surveytoolbox]("icons/surveytoolbox_hex.svg")
 
 It is from my own experience of analysing survey data in R that, whilst more often than not you're able to do what you want to do, there is a sense that the 'essential functions' are scattered across different packages and Stack Overflow answers. This is understandable, as the workflow of every analyst is bound to be unique, and it  isn't necessarily sensible to have 100-odd functions collected in a single package for each user - there is bound to be a need to draw functions from multiple packages.  
 
@@ -15,8 +18,8 @@ There are broadly several groups of functions that you can find in this package:
 - Copying data to and from Excel for ad-hoc analysis
 - Functions for changing the scale of Likert-scale type questions, including Max-Min Scaling
 - Cleaning variable names
-- Converting .sav (SPSS) files to smaller, faster-to-load RDS files
-
+- Converting .sav (SPSS) files to smaller, faster-to-load RDS files (e.g. `sav_to_rds()`)
+- Converting one or more categorical variable(s) into other variable types, such as dummy variables (binary), count variables (numeric), or "fill" variables (fills values from a required column if condition is TRUE)
 
 ---
 

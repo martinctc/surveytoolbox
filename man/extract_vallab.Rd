@@ -2,8 +2,7 @@
 % Please edit documentation in R/extract_vallab.R
 \name{extract_vallab}
 \alias{extract_vallab}
-\title{Return value labels as tibble
-Only works if variable as value label}
+\title{Return value labels as tibble}
 \usage{
 extract_vallab(x, variable)
 }
@@ -13,6 +12,5 @@ extract_vallab(x, variable)
 \item{variable}{Enter variable name as string}
 }
 \description{
-Return value labels as tibble
-Only works if variable as value label
+This function is conditional on the variable having value labels.
 }

@@ -1,5 +1,6 @@
 #' Return value labels as tibble
-#' Only works if variable as value label          
+#' 
+#' This function is conditional on the variable having value labels.
 #' @param x Data frame or tibble containing the variable           
 #' @param variable Enter variable name as string  
 #' @export                   
@@ -9,9 +10,9 @@ extract_vallab <- function(x,variable){
   } else {
     x[[variable]] %>%
       attr('labels') %>%
-      stack() %>%
+      utils::stack() %>%
       dplyr::as_tibble() %>%
       `names<-`(c("id",variable)) %>%
-      mutate_at(vars(variable),funs(as.character))
+      dplyr::mutate_at(vars(variable),~as.character)
   }
 }
