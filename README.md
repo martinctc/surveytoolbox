@@ -5,7 +5,6 @@ Currently under development!
 
 
 <img src="icons/surveytoolbox_hex.svg?sanitize=true" align="right" height = 150 width = 150/>
-==============================================================
 
 ------------------------------------------------------------------------
 
