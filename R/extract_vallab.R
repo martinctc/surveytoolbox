@@ -13,6 +13,6 @@ extract_vallab <- function(x,variable){
       utils::stack() %>%
       dplyr::as_tibble() %>%
       `names<-`(c("id",variable)) %>%
-      dplyr::mutate_at(vars(variable),~as.character)
+      dplyr::mutate_at(vars(variable),~as.character(.))
   }
 }

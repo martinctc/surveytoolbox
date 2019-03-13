@@ -33,3 +33,15 @@ system(paste(shQuote(file.path(R.home("bin"), "R")),
              "CMD", "Rd2pdf", shQuote(path)))
 
 #### Create HEX Sticker ####
+library(hexSticker)
+sticker(expression(plot(cars, cex=.5, cex.axis=.5, mgp=c(0,.3,0), xlab="", ylab="")),
+        package="hexSticker", p_size=8, s_x=1, s_y=.8, s_width=1.2, s_height=1,
+        filename="baseplot.svg")
+dev.off()
+
+sticker("https://image.flaticon.com/icons/svg/1422/1422254.svg",
+        package="surveytoolbox",
+        p_size = 5,
+        dpi = 600,
+        filename="baseplot.svg")
+dev.off()
