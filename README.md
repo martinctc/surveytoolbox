@@ -4,7 +4,7 @@ Currently under development!
 (First created 29 Dec 2018)
 
 
-surveytoolbox <img src="icons/surveytoolbox_hex.svg?sanitize=true" align="right" />
+surveytoolbox <img src="icons/surveytoolbox_hex.svg?sanitize=true" align="right" height = 50 width = 50/>
 ==============================================================
 
 ------------------------------------------------------------------------
