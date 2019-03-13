@@ -3,7 +3,11 @@ A R package containing useful support functions for survey analysis.
 Currently under development! 
 (First created 29 Dec 2018)
 
-![surveytoolbox]("https://raw.githubusercontent.com/martinctc/surveytoolbox/master/icons/surveytoolbox_hex.svg?sanitize=true")
+
+surveytoolbox <img src="icons/surveytoolbox_hex.svg?sanitize=true" align="right" />
+==============================================================
+
+------------------------------------------------------------------------
 
 It is from my own experience of analysing survey data in R that, whilst more often than not you're able to do what you want to do, there is a sense that the 'essential functions' are scattered across different packages and Stack Overflow answers. This is understandable, as the workflow of every analyst is bound to be unique, and it  isn't necessarily sensible to have 100-odd functions collected in a single package for each user - there is bound to be a need to draw functions from multiple packages.  
 
