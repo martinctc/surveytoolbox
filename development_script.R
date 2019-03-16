@@ -17,7 +17,6 @@ library(tidyverse)
 library(devtools)
 library(roxygen2)
 
-
 roxygen2::roxygenise()
 #' Run these three functions to build up the package
 devtools::build()
@@ -26,6 +25,7 @@ devtools::document()
 
 devtools::build_manual()
 devtools::check(manual=TRUE) # check whether everything is there
+devtools::check()
 
 # Run this to build and check in one line
 devtools::check(document = TRUE, manual=TRUE)
@@ -41,3 +41,17 @@ pack <- "surveytools"
 path <- find.package(pack)
 system(paste(shQuote(file.path(R.home("bin"), "R")),
              "CMD", "Rd2pdf", shQuote(path)))
+
+#### Create HEX Sticker ####
+library(hexSticker)
+sticker(expression(plot(cars, cex=.5, cex.axis=.5, mgp=c(0,.3,0), xlab="", ylab="")),
+        package="hexSticker", p_size=8, s_x=1, s_y=.8, s_width=1.2, s_height=1,
+        filename="baseplot.svg")
+dev.off()
+
+sticker("https://image.flaticon.com/icons/svg/1422/1422254.svg",
+        package="surveytoolbox",
+        p_size = 5,
+        dpi = 600,
+        filename="baseplot.svg")
+dev.off()

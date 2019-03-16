@@ -3,7 +3,8 @@
 \name{copy_df}
 \alias{copy_df}
 \title{Copy a data frame to clipboard for pasting in Excel
-Pipe optimised}
+Pipe optimised
+Accompanies read_df() as a tool for ad-hoc analysis, which reads a data table copied from Excel into R.}
 \usage{
 copy_df(x, row.names = FALSE, col.names = TRUE, expand = "",
   quietly = FALSE, ...)
@@ -16,4 +17,5 @@ copy_df(x, row.names = FALSE, col.names = TRUE, expand = "",
 \description{
 Copy a data frame to clipboard for pasting in Excel
 Pipe optimised
+Accompanies read_df() as a tool for ad-hoc analysis, which reads a data table copied from Excel into R.
 }
