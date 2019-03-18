@@ -3,6 +3,7 @@
 export(CAGR)
 export(any_x)
 export(append_to_list)
+export(apply_row)
 export(as_percent)
 export(box_it)
 export(categorise)
