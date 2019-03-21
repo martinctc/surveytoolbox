@@ -6,7 +6,9 @@
 #' Throws up an error message if values differ. 
 #' 
 #' @examples
+#' \dontrun{
 #' squish(c(1,2,1))
+#' } 
 #' squish(c(1,1,1))
 #' 
 #' @export
