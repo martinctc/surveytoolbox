@@ -2,9 +2,9 @@
 % Please edit documentation in R/append_to_list.R
 \name{append_to_list}
 \alias{append_to_list}
-\title{Append an item to a list dynamically (pipe-optimised)}
+\title{Append an item to a list dynamically}
 \usage{
-append_to_list(x, list_x, name = "")
+append_to_list(x, list_x, name = "", enviro = .GlobalEnv)
 }
 \arguments{
 \item{x}{An object to append to list, e.g. vector, data frame.}
@@ -12,9 +12,12 @@ append_to_list(x, list_x, name = "")
 \item{list_x}{Target list to append object to.}
 
 \item{name}{Specify a character string for the name of the list. Defaults to blank}
+
+\item{enviro}{Specifies the environment}
 }
 \description{
-Function directly appends item to list in Global Environment
+The `append_to_list()` function appends an object to the specified list in Global Environment (default).
+This function is pipe-optimised, and allows the option of specifying a name for the new object in the list.
 }
 \examples{
 a_list <- list(NULL)

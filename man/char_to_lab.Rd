@@ -10,5 +10,5 @@ char_to_lab(x)
 \item{x}{Character vector to pass through}
 }
 \description{
-Convert character variable to labelled integer variable
+This function converts the character values into value labels, assigning each value an integer.
 }

@@ -1,6 +1,10 @@
 #' Serialise a SPSS file to RDS
 #' 
-#' Old file name is retained and saved in the same location as RDS if export is unspecified 
+#' This function is useful for converting large, bulky SAV files into RDS files which are
+#' faster to load and take up less memory. Use readRDS() for loading in the exported file.
+#' By default, the old file name is retained and saved in the same location as RDS
+#' unless otherwise specified by the export argument.
+#' 
 #' @param import String containing path to .SAV file
 #' @param export String containing desired file name for RDS export. 
 #' Default is to use same name as .SAV file     

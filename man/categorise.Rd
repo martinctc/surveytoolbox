@@ -2,19 +2,20 @@
 % Please edit documentation in R/categorise.R
 \name{categorise}
 \alias{categorise}
-\title{Convert numeric variable into categorical variable
-Essentially a wrapper around the cut() function}
+\title{Convert numeric variable into categorical variable}
 \usage{
 categorise(x, breaks)
 }
 \arguments{
-\item{x}{vector to be passed through}
+\item{x}{A numeric vector to be passed through.}
 
-\item{break}{points for the categories. Both the top and bottom breaks must be provided.}
+\item{breaks}{Break points for the categories. Both the top and bottom breaks must be provided.}
+}
+\value{
+Returns a character vector.
 }
 \description{
-Convert numeric variable into categorical variable
-Essentially a wrapper around the cut() function
+This is a wrapper around the cut() function.
 }
 \examples{
 categorise(seq(10),breaks=c(0,3,10))

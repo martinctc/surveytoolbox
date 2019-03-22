@@ -2,21 +2,19 @@
 % Please edit documentation in R/cor_to_df.R
 \name{cor_to_df}
 \alias{cor_to_df}
-\title{Convert correlation matrix into a tidy data frame
-Use label_table as an input
-Identify matching id}
+\title{Convert correlation matrix into a tidy data frame}
 \usage{
 cor_to_df(cor_m, label_table, id)
 }
 \arguments{
-\item{cor_m}{Correlation matrix in the form of an output from cor()}
+\item{cor_m}{Correlation matrix in the form of an output from cor().}
 
 \item{label_table}{A two-column table with one column used for matching and the other for returning labels.}
 
-\item{id}{Use this argument to specify a string to refers to the matching / id column in the label_table.}
+\item{id}{A character vector specifying the name of the matching / id column in the label_table.}
 }
 \description{
-Convert correlation matrix into a tidy data frame
-Use label_table as an input
-Identify matching id
+This function assumes that the input into cor() uses variable names, and available
+variable labels are not used.
+The label_table argument is used to match up the variable names with the variable labels.
 }

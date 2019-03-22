@@ -2,17 +2,16 @@
 % Please edit documentation in R/data_dict.R
 \name{data_dict}
 \alias{data_dict}
-\title{Create a Data Dictionary from a data frame with Variable and Value Labels
-Exported objects from SPSS}
+\title{Create a Data Dictionary from a data frame with Variable and Value Labels.}
 \usage{
 data_dict(x, max_char = 32760)
 }
 \arguments{
-\item{x}{data frame}
+\item{x}{A data frame object to be passed through.}
 
 \item{max_char}{Maximum character allowed on Variable and Value label columns.}
 }
 \description{
-Create a Data Dictionary from a data frame with Variable and Value Labels
-Exported objects from SPSS
+This function mimics exported objects from SPSS.
+A table is returned, summarising the variable and value labels that exist in the data frame.
 }

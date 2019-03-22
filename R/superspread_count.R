@@ -1,5 +1,9 @@
 #' Convert single-code column(s) into "multiple choice" formats, filling data with sum of counts.
-#' Counts the number of occurrences per row in a number of categorical variables.
+#' 
+#' This function counts the number of occurrences per row in a number of categorical / single-code variables.
+#' @return n number of new binary / multiple-choice columns / variables, with values representing the count of
+#'  row-occurrences in the original set of input categorical/single-code variables.
+#'  n represents the number of unique values found in the input variables.
 #' 
 #' @param df Data frame to apply function to.
 #' @param select_helpers Use dplyr select helpers to apply function only to required columns. 

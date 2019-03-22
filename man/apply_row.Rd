@@ -12,9 +12,11 @@ apply_row(x, select_helpers = everything(), FUN, ...)
 \item{select_helpers}{Select variables using dplyr::select() syntax}
 
 \item{FUN}{Function to be applied to selected columns}
+
+\item{...}{Additional arguments to the function.}
 }
 \description{
-Apply a function rowwise, selecting variables with dplyr::select() syntax
+Makes code slightly less verbose for rowwise operations.
 }
 \examples{
 \dontrun{

@@ -1,7 +1,9 @@
-#' Create a Data Dictionary from a data frame with Variable and Value Labels
-#' Exported objects from SPSS
+#' Create a Data Dictionary from a data frame with Variable and Value Labels.
 #' 
-#' @param x data frame
+#' This function mimics exported objects from SPSS.
+#' A table is returned, summarising the variable and value labels that exist in the data frame.
+#' 
+#' @param x A data frame object to be passed through.
 #' @param max_char Maximum character allowed on Variable and Value label columns.       
 #' @export              
 data_dict <-function(x,max_char=32760){

@@ -2,8 +2,7 @@
 % Please edit documentation in R/lab_to_char.R
 \name{lab_to_char}
 \alias{lab_to_char}
-\title{Convert labelled double variable to character variable
-Returns error if variable is not of class labelled double}
+\title{Convert labelled double variable to character variable}
 \usage{
 lab_to_char(x)
 }
@@ -11,6 +10,5 @@ lab_to_char(x)
 \item{x}{Labelled double vector to pass through}
 }
 \description{
-Convert labelled double variable to character variable
-Returns error if variable is not of class labelled double
+Returns error if variable is not of class labelled double.
 }

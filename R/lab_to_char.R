@@ -1,5 +1,6 @@
 #' Convert labelled double variable to character variable
-#' Returns error if variable is not of class labelled double
+#' 
+#' Returns error if variable is not of class labelled double.
 #' 
 #' @param x Labelled double vector to pass through
 #' @export

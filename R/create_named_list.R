@@ -1,7 +1,8 @@
 #' Create a named list object with two vectors
 #' 
+#' Input two vectors of the same length and return a named list.
 #' @param x Vector containing character strings, e.g. "A"
-#' @param y Vector containing numeric values, e.g. 1, 3
+#' @param y Vector containing values for the list, e.g. 1, 3
 #' @examples
 #' create_named_list(c("Alice","Bob","Carol"),c(54,60,23))
 #' @export

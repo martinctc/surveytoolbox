@@ -1,5 +1,8 @@
 #' Convert ordinal variables into binary variables by "boxing"
-#' E.g. create Top Two Box variable from a 7-point agreement scale question
+#' 
+#' For instance, you can create a Top Two Box variable from a 7-point agreement scale question.
+#' Function returns a labelled double variable, which will have value label attributes.
+#' 
 #' @param x Variable to be passed through
 #' @param which Character string to specify which end of spectrum to take values - valid inputs are "top" and "bottom"
 #' @param number Number to take values from

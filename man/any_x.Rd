@@ -2,10 +2,7 @@
 % Please edit documentation in R/any_x.R
 \name{any_x}
 \alias{any_x}
-\title{Function that returns TRUE/FALSE if value exists in x, but returns NA if x consists entirely of NAs
-A more nuanced response is returned compared to any(x %in% value).
-Has useful applications in understanding a set of categorical variables belonging to a single question.
-E.g. A question on brand usage across 10 product types to understand 'any' usage of a brand x.}
+\title{Function that returns TRUE/FALSE if value exists in x, but returns NA if x consists entirely of NAs}
 \usage{
 any_x(x, value)
 }
@@ -14,9 +11,11 @@ any_x(x, value)
 
 \item{value}{Value to test whether it exists in x. NA is returned if none exists at all.}
 }
+\value{
+A logical vector whether a value exists in x, and returns NA if x contains only NAs.
+}
 \description{
-Function that returns TRUE/FALSE if value exists in x, but returns NA if x consists entirely of NAs
-A more nuanced response is returned compared to any(x %in% value).
+A more nuanced response is returned than the standard R method, which does not return NAs if x is all NAs.
 Has useful applications in understanding a set of categorical variables belonging to a single question.
 E.g. A question on brand usage across 10 product types to understand 'any' usage of a brand x.
 }

@@ -2,8 +2,7 @@
 % Please edit documentation in R/as_percent.R
 \name{as_percent}
 \alias{as_percent}
-\title{Convert as percent (string)
-Convert a numeric value into a string with percentage sign.}
+\title{Convert as percent (string)}
 \usage{
 as_percent(num, rounding = 0)
 }
@@ -13,6 +12,8 @@ as_percent(num, rounding = 0)
 \item{rounding}{Number of decimal places to round to. Default is 0.}
 }
 \description{
-Convert as percent (string)
 Convert a numeric value into a string with percentage sign.
+}
+\examples{
+as_percent(.86748)
 }

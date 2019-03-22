@@ -2,8 +2,7 @@
 % Please edit documentation in R/box_it.R
 \name{box_it}
 \alias{box_it}
-\title{Convert ordinal variables into binary variables by "boxing"
-E.g. create Top Two Box variable from a 7-point agreement scale question}
+\title{Convert ordinal variables into binary variables by "boxing"}
 \usage{
 box_it(x, which = "top", number = 2)
 }
@@ -15,8 +14,8 @@ box_it(x, which = "top", number = 2)
 \item{number}{Number to take values from}
 }
 \description{
-Convert ordinal variables into binary variables by "boxing"
-E.g. create Top Two Box variable from a 7-point agreement scale question
+For instance, you can create a Top Two Box variable from a 7-point agreement scale question.
+Function returns a labelled double variable, which will have value label attributes.
 }
 \examples{
 box_it(sample(1:10,100,replace=TRUE)) # Converted to binary variable where 9, 10 are selected

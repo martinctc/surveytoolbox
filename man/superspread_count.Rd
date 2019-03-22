@@ -2,8 +2,7 @@
 % Please edit documentation in R/superspread_count.R
 \name{superspread_count}
 \alias{superspread_count}
-\title{Convert single-code column(s) into "multiple choice" formats, filling data with sum of counts.
-Counts the number of occurrences per row in a number of categorical variables.}
+\title{Convert single-code column(s) into "multiple choice" formats, filling data with sum of counts.}
 \usage{
 superspread_count(df, select_helpers = everything())
 }
@@ -13,9 +12,13 @@ superspread_count(df, select_helpers = everything())
 \item{select_helpers}{Use dplyr select helpers to apply function only to required columns. 
 Leave blank to include everything}
 }
+\value{
+n number of new binary / multiple-choice columns / variables, with values representing the count of
+ row-occurrences in the original set of input categorical/single-code variables.
+ n represents the number of unique values found in the input variables.
+}
 \description{
-Convert single-code column(s) into "multiple choice" formats, filling data with sum of counts.
-Counts the number of occurrences per row in a number of categorical variables.
+This function counts the number of occurrences per row in a number of categorical / single-code variables.
 }
 \examples{
 \dontrun{

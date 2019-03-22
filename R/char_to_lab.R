@@ -1,5 +1,7 @@
 #' Convert character variable to labelled integer variable
 #' 
+#' This function converts the character values into value labels, assigning each value an integer.
+#' 
 #' @param x Character vector to pass through
 #' 
 #' @export

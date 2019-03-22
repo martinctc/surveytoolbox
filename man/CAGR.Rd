@@ -2,12 +2,19 @@
 % Please edit documentation in R/CAGR.R
 \name{CAGR}
 \alias{CAGR}
-\title{CAGR Calculator}
+\title{Calculate CAGR}
 \usage{
-CAGR(value.beginning, value.ending, number.of.periods)
+CAGR(value_begin, value_end, n_periods)
+}
+\arguments{
+\item{value_begin}{The value at the start of the series.}
+
+\item{value_end}{The value at the end of the series.}
+
+\item{n_periods}{The number of periods to base the CAGR calculations on.}
 }
 \description{
-Calculates CAGR
+Calculates the Compound Annual Growth Rate (CAGR).
 }
 \seealso{
 http://www.investopedia.com/terms/c/cagr.asp

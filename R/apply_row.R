@@ -1,8 +1,11 @@
 #' Apply a function rowwise, selecting variables with dplyr::select() syntax
 #'
+#' Makes code slightly less verbose for rowwise operations.
+#'
 #' @param x Data frame or tibble to pass through.
 #' @param select_helpers Select variables using dplyr::select() syntax
 #' @param FUN Function to be applied to selected columns
+#' @param ... Additional arguments to the function.
 #' 
 #' @examples
 #' \dontrun{
