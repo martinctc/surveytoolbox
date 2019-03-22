@@ -8,6 +8,8 @@ read_df(header = TRUE, ...)
 }
 \arguments{
 \item{header}{Logical value to specify whether copied table contains a header row.}
+
+\item{...}{Additional arguments for read.table().}
 }
 \description{
 Read in a data frame in the clipboard, copied from Excel

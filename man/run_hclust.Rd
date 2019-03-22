@@ -11,7 +11,7 @@ run_hclust(x, method = "complete", dmeth = "euclidean")
 
 \item{method}{Specify method for hierarchical clustering. See ?hclust for details}
 
-\item{dmethod}{Specify method for calculating distance. See ?dist for details}
+\item{dmeth}{Specify method for calculating distance. See ?dist for details}
 }
 \description{
 A wrapper function to run hierarchical clustering

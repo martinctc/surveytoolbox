@@ -2,7 +2,7 @@
 #' 
 #' @param x Data frame to run hierarchical clustering
 #' @param method Specify method for hierarchical clustering. See ?hclust for details
-#' @param dmethod Specify method for calculating distance. See ?dist for details
+#' @param dmeth Specify method for calculating distance. See ?dist for details
 #' @examples 
 #' library(magrittr)
 #' library(dplyr)

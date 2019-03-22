@@ -10,11 +10,15 @@ copy_df(x, row.names = FALSE, col.names = TRUE, expand = "",
 \arguments{
 \item{x}{Data frame to be passed through. Cannot contain list-columns or nested data frames.}
 
-\item{row.names}{A logical vector for specifying whether to allow row names.}
+\item{row.names}{A logical vector for specifying whether to allow row names. Defaults to FALSE.}
+
+\item{col.names}{A logical vector for specifying whether to allow column names. Defaults to FALSE.}
 
 \item{expand}{Add number to manually expand clipboard size}
 
 \item{quietly}{Set this to TRUE to not print data frame on console}
+
+\item{...}{Additional arguments for write.table().}
 }
 \description{
 This is a pipe-optimised function, and

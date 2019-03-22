@@ -1,9 +1,9 @@
-#' Squish - function for combining values if they are identical
+#' Returns a single-length vector if all values in vector are identical. 
 #' 
-#' Use this with group_by() to get to a "higher" level. 
-#' One person may have multiple web visits, where all visits would have the same age and gender.
+#' This can be used with group_by() to transform data to a "higher" level with hierarchically structured data. 
+#' For instance, one person may have multiple web visits, where all visits would have the same age and gender.
 #' Getting to the person-level data (each observation is a person) would require 'summarising'.
-#' Throws up an error message if values differ. 
+#' squish() throws up an error message if values differ. 
 #' 
 #' @examples
 #' \dontrun{
