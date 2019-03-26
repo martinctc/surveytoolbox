@@ -34,9 +34,10 @@ superspread <- function (df, select_helpers) {
     }
   }
   df %>%
-    .[, `:=`((new_dummy_labs),
+    .[, ":="((new_dummy_labs),
              lapply(new_dummy_labs,
                     function(x) purrr::reduce(purrr::map(as.list(input_vars_tb),
                                                          ~. %in% x), pairwise_any)))] %>%
     dplyr::as_tibble()
 }
+
