@@ -22,7 +22,7 @@
 #' 
 #' @export
 superspread <- function (df, select_helpers) {
-  df <- data.table(df)
+  df <- data.table::data.table(df)
   input_vars_tb <- dplyr::select(df, select_helpers)
   new_dummy_labs <- unique(as.vector(as.matrix(input_vars_tb)))
   pairwise_any <- function(var1, var2) {
@@ -35,7 +35,8 @@ superspread <- function (df, select_helpers) {
   }
   df %>%
     .[, `:=`((new_dummy_labs),
-             lapply(new_dummy_labs,function(x) purrr::reduce(purrr::map(as.list(input_vars_tb),
-                                                                        ~. %in% x), pairwise_any)))] %>%
+             lapply(new_dummy_labs,
+                    function(x) purrr::reduce(purrr::map(as.list(input_vars_tb),
+                                                         ~. %in% x), pairwise_any)))] %>%
     dplyr::as_tibble()
 }
