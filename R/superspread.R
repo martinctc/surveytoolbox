@@ -7,8 +7,11 @@
 #' Use everything() to select all variables. These variables must all be character type.
 #' @family superspread functions
 #' @import dplyr
+#' @importFrom magrittr %>%
+#' @importFrom data.table :=
 #' 
 #' @examples 
+#' superspread(iris,"Species")
 #' \dontrun{
 #' library(data.table)
 #' library(dplyr)
@@ -22,7 +25,7 @@
 #' 
 #' @export
 superspread <- function (df, select_helpers) {
-  df <- data.table::data.table(df)
+  dt <- data.table::data.table(df)
   input_vars_tb <- dplyr::select(df, select_helpers)
   new_dummy_labs <- unique(as.vector(as.matrix(input_vars_tb)))
   pairwise_any <- function(var1, var2) {
@@ -33,11 +36,19 @@ superspread <- function (df, select_helpers) {
       sapply(1:length(var1), function(x) any(var1[x], var2[x]))
     }
   }
-  df %>%
-    .[, `:=`((new_dummy_labs),
-                         lapply(new_dummy_labs,
-                                function(x) purrr::reduce(
-                                  purrr::map(as.list(input_vars_tb),~. %in% x), pairwise_any)))] %>%
+  
+  dt %>%
+    .[, (new_dummy_labs):= lapply(new_dummy_labs,
+                                  function(x) purrr::reduce(
+                                    purrr::map(as.list(input_vars_tb),~. %in% x),
+                                    pairwise_any))] %>%
     dplyr::as_tibble()
+  
+  # dt %>%
+  #   .[, `:=`((new_dummy_labs),
+  #                        lapply(new_dummy_labs,
+  #                               function(x) purrr::reduce(
+  #                                 purrr::map(as.list(input_vars_tb),~. %in% x), pairwise_any)))] %>%
+  #   dplyr::as_tibble()
 }
 

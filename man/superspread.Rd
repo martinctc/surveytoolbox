@@ -20,6 +20,7 @@ Uses data.table() for speed (enhanced from the previous version)
 Uses dplyr select() special functions to select categorical variables.
 }
 \examples{
+superspread(iris,"Species")
 \dontrun{
 library(data.table)
 library(dplyr)
