@@ -29,12 +29,13 @@ There are broadly several groups of functions that you can find in this package:
 ### Installation
 
 surveytoolbox is not release on CRAN (yet). 
+You can install the latest development version from GitHub with:
 
-You can install the latest development version from GitHub with
-    ``` r
-    install.packages("devtools")
-    devtools::install_github("martinctc/surveytoolbox")
-    ```
+```
+install.packages("devtools")
+devtools::install_github("martinctc/surveytoolbox")
+```
+
 ---
 
 This package is currently still under development, so it does come with a health advice: if you do wish to use them - have a check and run through the examples before assimilating them into your analysis. 
