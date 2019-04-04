@@ -12,7 +12,7 @@
 #'  look_up(tibble(var=0.2,return="zero-point-two"))
 #' @export
 look_up <- function(x,table,index="var",column=2){
-  sapply(1:length(x),
+  sapply(seq_along(1:length(x)),
          function(i){
            if(is.na(x[[i]])){
              return("")
@@ -21,7 +21,7 @@ look_up <- function(x,table,index="var",column=2){
            }
          }) %>% as.character() -> matched_x
   
-  sapply(1:length(x),
+  sapply(seq_along(1:length(x)),
          function(i){
            if(matched_x[[i]]=="character(0)"){
              x[[i]]
