@@ -23,9 +23,13 @@ box_it <-function(x,which="top",number=2){
                    !(x %in% valid_range)~0,
                    TRUE~NA_real_) -> output
   
-  attr(output,'labels') <- c("Selected"=1,"Not selected"=0,"Missing value"=NA_real_)
+  attr(output,'labels') <- c("Selected"=1,
+                             "Not selected"=0,
+                             "Missing value"=NA_real_)
   
   range_print <- paste0(valid_range,collapse=", ")
-  message(paste0("Converted to binary variable where ",range_print," are selected"))
+  message(paste0("Converted to binary variable where ",
+                 range_print,
+                 " are selected"))
   return(output)
 } 
