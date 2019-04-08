@@ -14,16 +14,16 @@ It is from my own experience of analysing survey data in R that whilst more ofte
 
 This is a curated collection of functions that I've either written or come across over the past years. In my analysis workflow, I often use these functions in conjunction with `tidyverse`, `srvyr` (allows you to work with weighted data), and `janitor`. There are also some miscellaneous functions which work with common survey analysis techniques such as factor analysis (using the `factanal()` function from `stats)
 
-**The aim of this package is to attempt to organise things a bit and hopefully add value by curation.**
+**The aim of this package is to attempt to organise things a bit and add value by curation.**
 
 ---
 
 ### Summary of Functions
 
 There are broadly several groups of functions that you can find in this package:
-- Creating dummy variables, and variations of these which take inputs from multiple categorical variables 
-- Copying data to and from Excel for ad-hoc analysis
-- Functions for changing the scale of Likert-scale type questions, including Max-Min Scaling
+- Creating dummy variables, and variations of these which take inputs from multiple categorical variables (`superspread()`)
+- Copying data to and from Excel for ad-hoc analysis (`copy_df()`)
+- Functions for changing the scale of Likert-scale type questions, including Max-Min Scaling (`likert_reverse`)
 - Cleaning variable names
 - Converting .sav (SPSS) files to smaller, faster-to-load RDS files (e.g. `sav_to_rds()`)
 - Converting one or more categorical variable(s) into other variable types, such as dummy variables (binary), count variables (numeric), or "fill" variables (fills values from a required column if condition is TRUE)
@@ -33,7 +33,7 @@ There are broadly several groups of functions that you can find in this package:
 
 ### Installation
 
-surveytoolbox is not release on CRAN (yet). 
+surveytoolbox is not released on CRAN (yet). 
 You can install the latest development version from GitHub with:
 
 ```
