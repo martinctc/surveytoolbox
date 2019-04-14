@@ -52,4 +52,5 @@ Note: Previously named 'surveytools', but now renamed to 'surveytoolbox' avoid c
 ### Contact me
 ---
 Please feel free to submit suggestions and report bugs: <https://github.com/martinctc/surveytoolbox/issues>
-Also check out my [website](https://martinctc.github.io)
+
+Also check out my [website](https://martinctc.github.io) for my other work and packages.
