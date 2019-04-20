@@ -30,17 +30,20 @@ devtools::check()
 # Run this to build and check in one line
 devtools::check(document = TRUE, manual=TRUE)
 
+
 # Good Practice
+
 goodpractice::gp()
 
 #--------------------------------------
+
 #' Set up package to use testthat
 
 devtools::use_testthat()
+
 devtools::test()
 
 #--------------------------------------
-
 # install("../surveytools")
 # install("../textworks")
 library(surveytools)
