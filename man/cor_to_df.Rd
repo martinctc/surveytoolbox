@@ -4,7 +4,7 @@
 \alias{cor_to_df}
 \title{Convert correlation matrix into a tidy data frame}
 \usage{
-cor_to_df(cor_m, label_table, id)
+cor_to_df(cor_m, label_table = NULL, id = NULL)
 }
 \arguments{
 \item{cor_m}{Correlation matrix in the form of an output from cor().}
@@ -16,5 +16,8 @@ cor_to_df(cor_m, label_table, id)
 \description{
 This function assumes that the input into cor() uses variable names, and available
 variable labels are not used.
-The label_table argument is used to match up the variable names with the variable labels.
+If either of the `label_table` or `id` arguments are unused, `cor_to_df`
+simply returns a tibble without label matching.
+Use the `label_table` and `id` arguments to match up variable names
+ with the variable labels.
 }
