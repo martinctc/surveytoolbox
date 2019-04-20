@@ -15,8 +15,7 @@ cor_to_df <- function(cor_m, label_table, id){
     matched_lab <- names(label_table)[names(label_table)!=id]
     
     cor_m %>%
-      as.data.frame() %>%
-      tibble::rownames_to_column("cor_matrix") %>%
+      tibble::as_tibble(rownames = "cor_matrix") %>%
       dplyr::left_join(label_table,by=c("cor_matrix"=id)) %>%
       dplyr::select(cor_matrix,matched_lab,everything())-> output_df
     
