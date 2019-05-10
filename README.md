@@ -1,5 +1,6 @@
 # surveytoolbox
-A R package containing useful support functions for survey analysis.
+R package containing tidy support functions for survey analysis.
+
 Currently under development! 
 (First created 29 Dec 2018)
 
