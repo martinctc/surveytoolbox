@@ -17,6 +17,9 @@ This is a curated collection of functions that I've either written or come acros
 
 **The aim of this package is to attempt to organise things a bit and add value by curation.**
 
+Additional reading on functions from this package:
+- https://martinctc.github.io/blog/working-with-spss-labels-in-r/
+
 ---
 
 ### Summary of Functions
