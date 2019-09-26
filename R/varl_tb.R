@@ -17,5 +17,5 @@ varl_tb <- function(x){
   purrr::map(x, ~attr(.,'label')) %>%
     purrr::map(~ifelse(purrr::is_null(.),"No label", .)) %>%
     tibble::enframe(name = "var", value = "var_label") %>%
-    tidyr::unnest()
+    tidyr::unnest(cols = c(var_label))
 }
