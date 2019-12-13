@@ -4,8 +4,14 @@
 \alias{copy_df}
 \title{Copy a data frame to clipboard for pasting in Excel}
 \usage{
-copy_df(x, row.names = FALSE, col.names = TRUE, expand = "",
-  quietly = FALSE, ...)
+copy_df(
+  x,
+  row.names = FALSE,
+  col.names = TRUE,
+  expand = "",
+  quietly = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{Data frame to be passed through. Cannot contain list-columns or nested data frames.}

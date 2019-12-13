@@ -34,6 +34,7 @@ superspread(df = dt, select_helpers = contains("cat"))
 
 }
 \seealso{
-Other superspread functions: \code{\link{superspread_count}}
+Other superspread functions: 
+\code{\link{superspread_count}()}
 }
 \concept{superspread functions}
