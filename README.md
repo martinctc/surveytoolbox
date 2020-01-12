@@ -53,6 +53,8 @@ This package is currently still under development, so it does come with a health
 
 Note: Previously named 'surveytools', but now renamed to 'surveytoolbox' avoid confusion with another similar package of the same name (8th March 2019).
 
+12th Jan 2020 - Functions relating to modelling have now been moved to a new package [modeltoobox](https://www.github.com/martinctc/modeltoobox).
+
 ### Contact me
 ---
 Please feel free to submit suggestions and report bugs: <https://github.com/martinctc/surveytoolbox/issues>
