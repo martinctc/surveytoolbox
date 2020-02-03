@@ -18,5 +18,6 @@ For instance, you can create a Top Two Box variable from a 7-point agreement sca
 Function returns a labelled double variable, which will have value label attributes.
 }
 \examples{
-box_it(sample(1:10,100,replace=TRUE)) # Converted to binary variable where 9, 10 are selected
+box_it(sample(1:10,100,replace = TRUE)) # Converted to binary variable where 9, 10 are selected
+box_it(sample(c(1:10, NA),100,replace = TRUE))
 }

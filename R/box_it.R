@@ -7,7 +7,8 @@
 #' @param which Character string to specify which end of spectrum to take values - valid inputs are "top" and "bottom"
 #' @param number Number to take values from
 #' @examples
-#' box_it(sample(1:10,100,replace=TRUE)) # Converted to binary variable where 9, 10 are selected
+#' box_it(sample(1:10,100,replace = TRUE)) # Converted to binary variable where 9, 10 are selected
+#' box_it(sample(c(1:10, NA),100,replace = TRUE))
 #' @export
 box_it <-function(x,which="top",number=2){
   max_x <- max(x,na.rm = TRUE)
@@ -19,8 +20,9 @@ box_it <-function(x,which="top",number=2){
     valid_range <- min_x:(min_x + number - 1)
   }
   
-  dplyr::case_when(x %in% valid_range~1,
-                   !(x %in% valid_range)~0,
+  dplyr::case_when(is.na(x) ~ NA_real_,
+                   x %in% valid_range ~ 1,
+                   !(x %in% valid_range) ~ 0,
                    TRUE~NA_real_) -> output
   
   attr(output,'labels') <- c("Selected"=1,
