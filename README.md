@@ -18,7 +18,8 @@ This is a curated collection of functions that I've either written or come acros
 **The aim of this package is to attempt to organise things a bit and add value by curation.**
 
 Additional reading on functions from this package:
-- https://martinctc.github.io/blog/working-with-spss-labels-in-r/
+- [Working with SPSS labels in R](https://martinctc.github.io/blog/working-with-spss-labels-in-r/)
+- Applying the timestamp function `timed_fn()`: [RStudio Projects and Working Directories: A Beginner's Guide](https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner%27s-guide/)
 
 ---
 
