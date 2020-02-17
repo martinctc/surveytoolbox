@@ -10,6 +10,6 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
-Imports: base,dplyr,stringr,stats,utils,tibble,readr,haven,tidyr,psych,magrittr,purrr, data.table
+Imports: base,dplyr,stringr,stats,utils,tibble,readr,haven,tidyr,psych,magrittr,purrr,glue,data.table
 Suggests: 
     testthat
