@@ -28,13 +28,13 @@ Additional reading on functions from this package:
 There are broadly several groups of functions that you can find in this package:
 - Creating dummy variables, and variations of these which take inputs from multiple categorical variables (`superspread()`)
 - Copying data to and from Excel for ad-hoc analysis (`copy_df()`)
-- Functions for changing the scale of Likert-scale type questions, including Max-Min Scaling (`likert_reverse`)
+- Functions for changing the scale of Likert-scale type questions, including Max-Min Scaling (`likert_reverse()`)
 - Cleaning variable names
 - Converting .sav (SPSS) files to smaller, faster-to-load RDS files (e.g. `sav_to_rds()`)
 - Converting one or more categorical variable(s) into other variable types, such as dummy variables (binary), count variables (numeric), or "fill" variables (fills values from a required column if condition is TRUE)
 - Functions for recoding variable and value labels (e.g. `recode_vallab()`, `set_varl()`, `set_vall()`)
 
-There is also a convenience function (`apply_rowwise()`) for performing rowwise operations, which is particularly useful when creating new variables based on a selection of columns on the datas. 
+There is also a convenience function (`apply_row()`) for performing rowwise operations, which is particularly useful when creating new variables based on a selection of columns on the datas. 
 
 ---
 
@@ -47,7 +47,16 @@ You can install the latest development version from GitHub with:
 install.packages("devtools")
 devtools::install_github("martinctc/surveytoolbox")
 ```
+---
 
+### Examples
+
+Here is an example of how to use the `apply_row()` function to create new variables:
+```
+library(tidyverse)
+iris %>%
+  mutate(Sepal_Sum = apply_row(., select_helpers = contains("Sepal"), sum, na.rm = TRUE))
+```
 ---
 
 ### News and Updates
