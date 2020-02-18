@@ -4,13 +4,19 @@
 \alias{as_nps_cat}
 \title{Convert numeric variable to NPS categorical variable}
 \usage{
-as_nps_cat(x)
+as_nps_cat(x, det = 1, pas = 2, pro = 3)
 }
 \arguments{
 \item{x}{Numeric variable to pass through. Valid range is 0 to 10 inclusive, otherwise returns a NA.}
+
+\item{det}{Numeric value to represent the code for Detractor. Defaults to 1.}
+
+\item{pas}{Numeric value to represent the code for Passive. Defaults to 2.}
+
+\item{pro}{Numeric value to represent the code for Promoter. Defaults to 3.}
 }
 \description{
-Returns a categorical variable with values 1, 2, and 3.
+Returns a categorical variable with default values over 1, 2, and 3.
 Suited for running multinomial logistic regression. 
 To calculate the NPS score, use `as_nps()`.
 }
