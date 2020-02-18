@@ -34,6 +34,8 @@ There are broadly several groups of functions that you can find in this package:
 - Converting one or more categorical variable(s) into other variable types, such as dummy variables (binary), count variables (numeric), or "fill" variables (fills values from a required column if condition is TRUE)
 - Functions for recoding variable and value labels (e.g. `recode_vallab()`, `set_varl()`, `set_vall()`)
 
+There is also a convenience function (`apply_rowwise()`) for performing rowwise operations, which is particularly useful when creating new variables based on a selection of columns on the datas. 
+
 ---
 
 ### Installation
