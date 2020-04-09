@@ -5,6 +5,8 @@
 #' Getting to the person-level data (each observation is a person) would require 'summarising'.
 #' squish() throws up an error message if values differ. 
 #' 
+#' @param x A vector to be passed through, can be numeric or character.
+#' 
 #' @examples
 #' \dontrun{
 #' squish(c(1,2,1))

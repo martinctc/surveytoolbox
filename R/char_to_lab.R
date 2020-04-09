@@ -4,6 +4,8 @@
 #' 
 #' @param x Character vector to pass through
 #' 
+#' @importFrom tidyr drop_na
+#' 
 #' @export
 char_to_lab <- function(x){
   unique_x <- unique(x)
@@ -17,7 +19,7 @@ char_to_lab <- function(x){
     if(is.na(x[[i]])){
       NA
     } else {
-      gen_df[gen_df$var==x[[i]],1] %>% drop_na() %>% unlist()
+      gen_df[gen_df$var==x[[i]],1] %>% tidyr::drop_na() %>% unlist()
     }
   }) -> outcome # Convert current values to assigned numbers
   
