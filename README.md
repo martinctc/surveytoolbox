@@ -54,6 +54,10 @@ devtools::install_github("martinctc/surveytoolbox")
 Here is an example of how to use the `apply_row()` function to create new variables:
 ```
 library(tidyverse)
+library(surveytoolbox)
+
+# Create a new column called `Sepal_Sum`
+# Sum all values with columns containing "Sepal"
 iris %>%
   mutate(Sepal_Sum = apply_row(., select_helpers = contains("Sepal"), sum, na.rm = TRUE))
 ```
@@ -65,7 +69,7 @@ This package is currently still under development, so it does come with a health
 
 Note: Previously named 'surveytools', but now renamed to 'surveytoolbox' avoid confusion with another similar package of the same name (8th March 2019).
 
-12th Jan 2020 - Functions relating to modelling have now been moved to a new package [modeltoobox](https://www.github.com/martinctc/modeltoobox).
+12th Jan 2020 - Functions relating to modelling have now been moved to a new package [modeltoolbox](https://www.github.com/martinctc/modeltoolbox).
 
 ### Contact me
 ---
