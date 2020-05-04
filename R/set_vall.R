@@ -18,5 +18,7 @@
 #'   .$Q2 %>% attributes()
 #' @export
 set_vall <- function(x,value_labels){
-  haven::labelled(x,value_labels)
+  label <- attr(x, 'label')
+  x <- haven::labelled(x,value_labels)
+  x <- set_varl(x, label)
 }      
