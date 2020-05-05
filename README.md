@@ -1,4 +1,7 @@
 # surveytoolbox
+
+[![R build status](https://github.com/martinctc/surveytoolbox/workflows/R-CMD-check/badge.svg)](https://github.com/martinctc/surveytoolbox/actions)
+
 R package containing tidy support functions for survey analysis.
 
 Currently under development! 
