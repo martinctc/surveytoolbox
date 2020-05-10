@@ -2,8 +2,7 @@
 % Please edit documentation in R/set_varl.R
 \name{set_varl}
 \alias{set_varl}
-\title{Set variable labels
-Pipe-workflow optimised}
+\title{Set variable labels}
 \usage{
 set_varl(x, variable_label)
 }
@@ -13,17 +12,23 @@ set_varl(x, variable_label)
 \item{variable_label}{String vector to be assigned as the variable label}
 }
 \description{
-Set variable labels
-Pipe-workflow optimised
+A pipe-workflow optimised method to set variable labels.
 }
 \examples{
 library(tibble)
 library(dplyr)
 library(magrittr)
+df <-
 tibble(RESPID=1:1000,
        Q1=sample(c(0,1,2),1000,replace=TRUE),
-       Q2=sample(c(0,1),1000,replace=TRUE))-> df
+       Q2=sample(c(0,1),1000,replace=TRUE))
 df \%>\%
   mutate_at("Q1",funs(set_varl(.,"Which of the following groups do you fall into?"))) \%>\%
   .$Q1
 }
+\seealso{
+Other Labels: 
+\code{\link{set_vall}()}
+}
+\concept{Labels}
+\concept{Variable labels}

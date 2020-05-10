@@ -1,10 +1,14 @@
-#' Create a Data Dictionary from a data frame with Variable and Value Labels.
+#' @title Create a Data Dictionary from a data frame with Variable and Value Labels.
 #' 
+#' @description
 #' This function mimics exported objects from SPSS.
 #' A table is returned, summarising the variable and value labels that exist in the data frame.
 #' 
 #' @param x A data frame object to be passed through.
-#' @param max_char Maximum character allowed on Variable and Value label columns.       
+#' @param max_char Maximum character allowed on Variable and Value label columns.
+#' 
+#' @return a [tibble][tibble::tibble-package]    
+#' 
 #' @export              
 data_dict <-function(x, max_char=32760){
   suppressWarnings(

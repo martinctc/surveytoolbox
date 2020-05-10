@@ -1,9 +1,16 @@
-#' Set value labels
-#' Pipe-workflow optimised
+#' @title Set value labels
 #' 
+#' @description 
+#' A pipe-workflow optimised method to set value labels.
+#' This is a wrapper around `haven::labelled()`, but preserves
+#' the original variable label of the vector.
 #' 
 #' @param x Variable to assign value labels to
 #' @param value_labels Named character vector to be assigned as value labels
+#' 
+#' @family Value labels
+#' @family Labels
+#' 
 #' @examples 
 #' 
 #' library(magrittr)

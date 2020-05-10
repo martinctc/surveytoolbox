@@ -11,6 +11,9 @@ data_dict(x, max_char = 32760)
 
 \item{max_char}{Maximum character allowed on Variable and Value label columns.}
 }
+\value{
+a [tibble][tibble::tibble-package]
+}
 \description{
 This function mimics exported objects from SPSS.
 A table is returned, summarising the variable and value labels that exist in the data frame.

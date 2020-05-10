@@ -22,4 +22,5 @@ This function is pipe-optimised, and allows the option of specifying a name for 
 \examples{
 a_list <- list(NULL)
 append_to_list(iris,a_list,"iris") 
+
 }

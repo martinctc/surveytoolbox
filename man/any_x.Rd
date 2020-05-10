@@ -15,8 +15,10 @@ any_x(x, value)
 A logical vector whether a value exists in x, and returns NA if x contains only NAs.
 }
 \description{
-A more nuanced response is returned than the standard R method, which does not return NAs if x is all NAs.
-Has useful applications in understanding a set of categorical variables belonging to a single question.
+A more nuanced response is returned than the standard R method,
+which does not return NAs if x is all NAs.
+Has useful applications in understanding a set of categorical variables
+belonging to a single question.
 E.g. A question on brand usage across 10 product types to understand 'any' usage of a brand x.
 }
 \examples{

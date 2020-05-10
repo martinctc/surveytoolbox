@@ -2,8 +2,7 @@
 % Please edit documentation in R/set_vall.R
 \name{set_vall}
 \alias{set_vall}
-\title{Set value labels
-Pipe-workflow optimised}
+\title{Set value labels}
 \usage{
 set_vall(x, value_labels)
 }
@@ -13,8 +12,9 @@ set_vall(x, value_labels)
 \item{value_labels}{Named character vector to be assigned as value labels}
 }
 \description{
-Set value labels
-Pipe-workflow optimised
+A pipe-workflow optimised method to set value labels.
+This is a wrapper around `haven::labelled()`, but preserves
+the original variable label of the vector.
 }
 \examples{
 
@@ -29,3 +29,9 @@ df \%>\%
   mutate_at("Q2",funs(set_vall(.,c("No"=0,"Yes"=1)))) \%>\%
   .$Q2 \%>\% attributes()
 }
+\seealso{
+Other Labels: 
+\code{\link{set_varl}()}
+}
+\concept{Labels}
+\concept{Value labels}

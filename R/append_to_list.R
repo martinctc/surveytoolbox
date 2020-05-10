@@ -1,5 +1,6 @@
-#' Append an item to a list dynamically
+#' @title Append an item to a list dynamically
 #' 
+#' @description
 #' The `append_to_list()` function appends an object to the specified list in Global Environment (default).
 #' This function is pipe-optimised, and allows the option of specifying a name for the new object in the list.
 #' 
@@ -11,6 +12,7 @@
 #' @examples
 #' a_list <- list(NULL)
 #' append_to_list(iris,a_list,"iris") 
+#' 
 #' @export
 append_to_list <- function(x, list_x, name="", enviro = .GlobalEnv){
   
