@@ -9,7 +9,7 @@ Currently under development!
 (First created 29 Dec 2018)
 
 
-<img src="icons/surveytoolbox_hex.svg?sanitize=true" align="right" height = 150 width = 150/>
+<img src="https://raw.githubusercontent.com/martinctc/surveytoolbox/master/icons/surveytoolbox_hex.svg" align="right" height = 150 width = 150/>
 
 ------------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ There is also a convenience function (`apply_row()`) for performing rowwise oper
 surveytoolbox is not released on CRAN (yet). 
 You can install the latest development version from GitHub with:
 
-```
+```R
 install.packages("devtools")
 devtools::install_github("martinctc/surveytoolbox")
 ```
@@ -56,7 +56,7 @@ devtools::install_github("martinctc/surveytoolbox")
 ### Examples
 
 Here is an example of how to use the `apply_row()` function to create new variables:
-```
+```R
 library(tidyverse)
 library(surveytoolbox)
 
@@ -75,8 +75,10 @@ Note: Previously named 'surveytools', but now renamed to 'surveytoolbox' avoid c
 
 12th Jan 2020 - Functions relating to modelling have now been moved to a new package [modeltoolbox](https://www.github.com/martinctc/modeltoolbox).
 
-### Contact me
+
 ---
+### Contact me
+
 Please feel free to submit suggestions and report bugs: <https://github.com/martinctc/surveytoolbox/issues>
 
 Also check out my [website](https://martinctc.github.io) for my other work and packages.
