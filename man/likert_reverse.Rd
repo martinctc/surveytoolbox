@@ -17,8 +17,8 @@ likert_reverse(x, top, bottom)
 A numeric vector which is the "reverse" of the original likert scale variable.
 }
 \description{
-Reverse a Likert scale such that on a 0-10 scale, 10 becomes 0 and 0 becomes 10. 
-Use the `top` and `bottom` arguments to specify the valid range of the scale.
+Reverse a Likert scale such that on a 0-10 scale, 10 becomes 0 and 0 becomes 10.
+Use the \code{top} and \code{bottom} arguments to specify the valid range of the scale.
 }
 \examples{
 data <-c(5, 4, 3, 2, 6)

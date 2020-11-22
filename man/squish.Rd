@@ -10,7 +10,7 @@ squish(x)
 \item{x}{A vector to be passed through, can be numeric or character.}
 }
 \description{
-This can be used with group_by() to transform data to a "higher" level with hierarchically structured data. 
+This can be used with group_by() to transform data to a "higher" level with hierarchically structured data.
 For instance, one person may have multiple web visits, where all visits would have the same age and gender.
 Getting to the person-level data (each observation is a person) would require 'summarising'.
 squish() throws up an error message if values differ.

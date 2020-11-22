@@ -16,8 +16,8 @@ cor_to_df(cor_m, label_table = NULL, id = NULL)
 \description{
 This function assumes that the input into cor() uses variable names, and available
 variable labels are not used.
-If either of the `label_table` or `id` arguments are unused, `cor_to_df`
+If either of the \code{label_table} or \code{id} arguments are unused, \code{cor_to_df}
 simply returns a tibble without label matching.
-Use the `label_table` and `id` arguments to match up variable names
- with the variable labels.
+Use the \code{label_table} and \code{id} arguments to match up variable names
+with the variable labels.
 }

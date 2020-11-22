@@ -7,11 +7,11 @@
 as_nps(x)
 }
 \arguments{
-\item{x}{Numeric variable to pass through. 
+\item{x}{Numeric variable to pass through.
 Valid range is 0 to 10 inclusive, otherwise returns an error message.}
 }
 \description{
-Convert a bounded numeric variable [0, 10] to a labelled vector where
-0 to 6 is a _Detractor_, 7 to 8 is a _Passive_, and 9 to 10 is a
-_Promoter_. The mean of the returned variable gives the Net Promoter Score (NPS).
+Convert a bounded numeric variable from 0 to 10 (inclusive) to a labelled vector where
+0 to 6 is a \emph{Detractor}, 7 to 8 is a \emph{Passive}, and 9 to 10 is a
+\emph{Promoter}. The mean of the returned variable gives the Net Promoter Score (NPS).
 }

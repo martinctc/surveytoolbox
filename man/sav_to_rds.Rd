@@ -9,7 +9,7 @@ sav_to_rds(import, export = "")
 \arguments{
 \item{import}{String containing path to .SAV file}
 
-\item{export}{String containing desired file name for RDS export. 
+\item{export}{String containing desired file name for RDS export.
 Default is to use same name as .SAV file}
 }
 \description{

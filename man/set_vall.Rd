@@ -13,7 +13,7 @@ set_vall(x, value_labels)
 }
 \description{
 A pipe-workflow optimised method to set value labels.
-This is a wrapper around `haven::labelled()`, but preserves
+This is a wrapper around \code{haven::labelled()}, but preserves
 the original variable label of the vector.
 }
 \examples{

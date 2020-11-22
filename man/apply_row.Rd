@@ -16,7 +16,7 @@ apply_row(x, select_helpers = everything(), FUN, ...)
 \item{...}{Additional arguments to the function.}
 }
 \description{
-`apply_row()` is a wrapper around `apply()` and `select()`,
+\code{apply_row()} is a wrapper around \code{apply()} and \code{select()},
 applying a function rowwise, and selecting variables with dplyr::select() syntax.
 This makes code slightly less verbose for rowwise operations.
 }

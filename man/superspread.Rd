@@ -11,7 +11,7 @@ superspread(df, select_helpers)
 \arguments{
 \item{df}{Data frame containing the multiple categorical variables.}
 
-\item{select_helpers}{Uses dplyr-style select functions to select multiple variables. 
+\item{select_helpers}{Uses dplyr-style select functions to select multiple variables.
 Use everything() to select all variables. These variables must all be character type.}
 }
 \description{

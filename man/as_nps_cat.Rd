@@ -17,6 +17,6 @@ as_nps_cat(x, det = 1, pas = 2, pro = 3)
 }
 \description{
 Returns a categorical variable with default values over 1, 2, and 3.
-Suited for running multinomial logistic regression. 
-To calculate the NPS score, use `as_nps()`.
+Suited for running multinomial logistic regression.
+To calculate the NPS score, use \code{as_nps()}.
 }

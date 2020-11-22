@@ -16,7 +16,7 @@ append_to_list(x, list_x, name = "", enviro = .GlobalEnv)
 \item{enviro}{Specifies the environment}
 }
 \description{
-The `append_to_list()` function appends an object to the specified list in Global Environment (default).
+The \code{append_to_list()} function appends an object to the specified list in Global Environment (default).
 This function is pipe-optimised, and allows the option of specifying a name for the new object in the list.
 }
 \examples{

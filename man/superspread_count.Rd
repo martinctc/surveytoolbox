@@ -9,13 +9,13 @@ superspread_count(df, select_helpers = everything())
 \arguments{
 \item{df}{Data frame to apply function to.}
 
-\item{select_helpers}{Use dplyr select helpers to apply function only to required columns. 
+\item{select_helpers}{Use dplyr select helpers to apply function only to required columns.
 Leave blank to include everything}
 }
 \value{
 n number of new binary / multiple-choice columns / variables, with values representing the count of
- row-occurrences in the original set of input categorical/single-code variables.
- n represents the number of unique values found in the input variables.
+row-occurrences in the original set of input categorical/single-code variables.
+n represents the number of unique values found in the input variables.
 }
 \description{
 This function counts the number of occurrences per row in a number of categorical / single-code variables.

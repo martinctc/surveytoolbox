@@ -7,7 +7,7 @@
 ttest_nps(x, conf_level = 0.95)
 }
 \arguments{
-\item{x}{NPS vector to be passed through. Use `surveytoolbox::as_nps` to convert a 11-point scale into a NPS vector.}
+\item{x}{NPS vector to be passed through. Use \code{surveytoolbox::as_nps} to convert a 11-point scale into a NPS vector.}
 
 \item{conf_level}{Numeric value to specify the confidence level. Defaults to 0.95.}
 }

@@ -13,7 +13,7 @@ look_up(x, table, index = "var", column = 2)
 
 \item{index}{Character string of the key/index column used for matching}
 
-\item{column}{Column index (integer) or name (string) to return from the lookup table. 
+\item{column}{Column index (integer) or name (string) to return from the lookup table.
 Default is the second column.}
 }
 \description{

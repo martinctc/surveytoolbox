@@ -12,7 +12,7 @@ data_dict(x, max_char = 32760)
 \item{max_char}{Maximum character allowed on Variable and Value label columns.}
 }
 \value{
-a [tibble][tibble::tibble-package]
+a \link[tibble:tibble-package]{tibble}
 }
 \description{
 This function mimics exported objects from SPSS.

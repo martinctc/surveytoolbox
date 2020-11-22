@@ -11,7 +11,7 @@ calc_weights(data, weight_var, target, weight_label = "weight")
 
 \item{weight_var}{The variable to be used for computing the weight}
 
-\item{target}{A named vector containing the target weights. Names must mtach labels for `weight_var`}
+\item{target}{A named vector containing the target weights. Names must mtach labels for \code{weight_var}}
 
 \item{weight_label}{A character vector to specify the variable name of the weight variable. Defaults to 'weight'.}
 }
