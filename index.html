@@ -78,7 +78,7 @@
 
 <p>R package containing tidy support functions for survey analysis.</p>
 <p>Currently under development! (First created 29 Dec 2018)</p>
-<p><img src="icons/surveytoolbox_hex.svg?sanitize=true" align="right" height="150" width="150/"></p>
+<p><img src="https://raw.githubusercontent.com/martinctc/surveytoolbox/master/icons/surveytoolbox_hex.svg" align="right" height="150" width="150/"></p>
 <hr>
 <div id="about-this-package" class="section level3">
 <h3 class="hasAnchor">
@@ -114,21 +114,23 @@
 <h3 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h3>
 <p>surveytoolbox is not released on CRAN (yet). You can install the latest development version from GitHub with:</p>
-<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")
-devtools::install_github("martinctc/surveytoolbox")</a></code></pre>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"martinctc/surveytoolbox"</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
 <div id="examples" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h3>
 <p>Here is an example of how to use the <code><a href="reference/apply_row.html">apply_row()</a></code> function to create new variables:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(tidyverse)
-library(surveytoolbox)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/martinctc/surveytoolbox">surveytoolbox</a></span><span class="op">)</span>
 
-# Create a new column called `Sepal_Sum`
-# Sum all values with columns containing "Sepal"
-iris %&gt;%
-  mutate(Sepal_Sum = apply_row(., select_helpers = contains("Sepal"), sum, na.rm = TRUE))</a></code></pre>
+<span class="co"># Create a new column called `Sepal_Sum`</span>
+<span class="co"># Sum all values with columns containing "Sepal"</span>
+<span class="va">iris</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>Sepal_Sum <span class="op">=</span> <span class="fu"><a href="reference/apply_row.html">apply_row</a></span><span class="op">(</span><span class="va">.</span>, select_helpers <span class="op">=</span> <span class="fu">contains</span><span class="op">(</span><span class="st">"Sepal"</span><span class="op">)</span>, <span class="va">sum</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
 <div id="news-and-updates" class="section level3">
@@ -137,10 +139,11 @@ iris %&gt;%
 <p>This package is currently still under development, so it does come with a health advice: if you do wish to use them - have a check and run through the examples before assimilating them into your analysis.</p>
 <p>Note: Previously named ‘surveytools’, but now renamed to ‘surveytoolbox’ avoid confusion with another similar package of the same name (8th March 2019).</p>
 <p>12th Jan 2020 - Functions relating to modelling have now been moved to a new package <a href="https://www.github.com/martinctc/modeltoolbox">modeltoolbox</a>.</p>
+<hr>
 </div>
-<div id="-contact-me" class="section level2">
-<h2 class="hasAnchor">
-<a href="#-contact-me" class="anchor"></a>### Contact me</h2>
+<div id="contact-me" class="section level3">
+<h3 class="hasAnchor">
+<a href="#contact-me" class="anchor"></a>Contact me</h3>
 <p>Please feel free to submit suggestions and report bugs: <a href="https://github.com/martinctc/surveytoolbox/issues" class="uri">https://github.com/martinctc/surveytoolbox/issues</a></p>
 <p>Also check out my <a href="https://martinctc.github.io">website</a> for my other work and packages.</p>
 </div>
