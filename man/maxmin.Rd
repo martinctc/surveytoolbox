@@ -16,12 +16,18 @@ A numeric vector is always returned.
 \examples{
 library(magrittr)
 library(dplyr)
-rand.data <-cbind(sample(1000,234:697),sample(1000,234:697)) \%>\% as.data.frame()
-rand.data \%>\% mutate_all(~maxmin(.))
 
-sample(1000,234:677) \%>\% maxmin()
 
-iris \%>\% mutate_at(vars(Petal.Length),~maxmin(.))
+rand.data <- data.frame(x = sample(x = 1000, size = 234:697))
+rand.data \%>\%
+  mutate(
+    y = maxmin(x)
+  )
+
+sample(x = 1000, size = 234:677) \%>\% maxmin()
+
+iris \%>\% mutate(Petal.Length2 = maxmin(Petal.Length))
+
 maxmin(iris$Petal.Length)
 }
 \keyword{max-min}
