@@ -9,14 +9,8 @@
 #' library(magrittr)
 #' library(dplyr)
 #' 
-#' 
-#' rand.data <- data.frame(x = sample(x = 1000, size = 234:697))
-#' rand.data %>%
-#'   mutate(
-#'     y = maxmin(x)
-#'   )
-#' 
-#' sample(x = 1000, size = 234:677) %>% maxmin()
+#' rand <- rnorm(100, mean = 0, sd = 1)
+#' data.frame(original = rand, transformed = maxmin(rand))
 #' 
 #' iris %>% mutate(Petal.Length2 = maxmin(Petal.Length))
 #' 
