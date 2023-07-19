@@ -1,7 +1,7 @@
 Package: surveytoolbox
 Type: Package
 Title: Useful Support Functions for Survey Analysis
-Version: 0.1.0
+Version: 0.1.0.9000
 Author: Martin Chan
 Maintainer: Martin Chan <martinchan53@gmail.com>
 URL: https://github.com/martinctc/surveytoolbox
