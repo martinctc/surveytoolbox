@@ -8,12 +8,12 @@
 #' @examples
 #' library(magrittr)
 #' library(dplyr)
-#' rand.data <-cbind(sample(1000,234:697),sample(1000,234:697)) %>% as.data.frame()
-#' rand.data %>% mutate_all(~maxmin(.))
 #' 
-#' sample(1000,234:677) %>% maxmin()
+#' rand <- rnorm(100, mean = 0, sd = 1)
+#' data.frame(original = rand, transformed = maxmin(rand))
 #' 
-#' iris %>% mutate_at(vars(Petal.Length),~maxmin(.))
+#' iris %>% mutate(Petal.Length2 = maxmin(Petal.Length))
+#' 
 #' maxmin(iris$Petal.Length)
 #' @export
 maxmin <- function(x){
