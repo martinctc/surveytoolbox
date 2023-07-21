@@ -5,7 +5,7 @@
 \title{Convert a string / character variable into a labelled double variable,
 using a pre-specified set of variable and value label mappings.}
 \usage{
-chr_to_var(var, lab_str, lab_num, var_label)
+chr_to_var(var, lab_str, lab_num, var_label, na = "<N/A>")
 }
 \arguments{
 \item{var}{string vector containing the variable}
@@ -19,6 +19,9 @@ determine the mapping.}
 
 \item{var_label}{string to be used as the variable label, passed through to
 \code{set_varl()}.}
+
+\item{na}{string to replace missing values with as a value label. Defaults to
+\code{"<N/A>"}. Set to \code{NULL} to not replace missing values.}
 }
 \value{
 a labelled double variable
@@ -37,14 +40,31 @@ This function is a wrapper around several other {surveytoolbox} functions:
 }
 }
 \examples{
-
 var1 <- c("Yes", "No", "Not sure")
 lab1 <- c(1, 0, 99)
 q1_var <- sample(var1, 100, replace = TRUE)
 
+# Convert to labelled double
 chr_to_var(
   var = q1_var,
   lab_str = var1,
+  lab_num = lab1,
+  var_label = c("Have you come across this product previously?")
+)
+
+## Example with missing values
+# Generate variable with missing values
+var1 <- c("Yes", "No", NA) 
+q1_var <- sample(var1, 100, replace = TRUE)
+
+# Variable and value labels
+var1b <- c("Yes", "No", "<N/A>")
+lab1 <- c(1, 0, 99)
+
+# Convert to labelled double
+chr_to_var(
+  var = q1_var,
+  lab_str = var1b,
   lab_num = lab1,
   var_label = c("Have you come across this product previously?")
 )

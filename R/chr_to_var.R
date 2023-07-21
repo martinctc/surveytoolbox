@@ -20,15 +20,17 @@
 #' determine the mapping.
 #' @param var_label string to be used as the variable label, passed through to
 #' `set_varl()`.
+#' @param na string to replace missing values with as a value label. Defaults to
+#' `"<N/A>"`. Set to `NULL` to not replace missing values. 
 #' 
 #' @return a labelled double variable
 #' 
 #' @examples
-#' 
 #' var1 <- c("Yes", "No", "Not sure")
 #' lab1 <- c(1, 0, 99)
 #' q1_var <- sample(var1, 100, replace = TRUE)
 #' 
+#' # Convert to labelled double
 #' chr_to_var(
 #'   var = q1_var,
 #'   lab_str = var1,
@@ -36,15 +38,31 @@
 #'   var_label = c("Have you come across this product previously?")
 #' )
 #' 
+#' ## Example with missing values
+#' # Generate variable with missing values
+#' var1 <- c("Yes", "No", NA) 
+#' q1_var <- sample(var1, 100, replace = TRUE)
+#' 
+#' # Variable and value labels
+#' var1b <- c("Yes", "No", "<N/A>")
+#' lab1 <- c(1, 0, 99)
+#' 
+#' # Convert to labelled double
+#' chr_to_var(
+#'   var = q1_var,
+#'   lab_str = var1b,
+#'   lab_num = lab1,
+#'   var_label = c("Have you come across this product previously?")
+#' )
+#' 
 #' @export             
 
-chr_to_var <- function(var, lab_str, lab_num, var_label) {
+chr_to_var <- function(var, lab_str, lab_num, var_label, na = "<N/A>") {
   
   table <- data.frame(var = lab_str, return = lab_num)
   nm_list <- surveytoolbox::create_named_list(x = lab_str, y = lab_num)
   
-  
-  var <- tidyr::replace_na(var, "<N/A>")
+  var <- tidyr::replace_na(var, na)
   var <- surveytoolbox::look_up(var, table)
   var <- as.numeric(var)
   var <- surveytoolbox::set_vall(var, value_labels = nm_list)
