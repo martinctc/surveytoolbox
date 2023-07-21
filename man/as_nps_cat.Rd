@@ -7,7 +7,8 @@
 as_nps_cat(x, det = 1, pas = 2, pro = 3)
 }
 \arguments{
-\item{x}{Numeric variable to pass through. Valid range is 0 to 10 inclusive, otherwise returns a NA.}
+\item{x}{Numeric variable to pass through. Valid range is 0 to 10 inclusive,
+otherwise returns a NA.}
 
 \item{det}{Numeric value to represent the code for Detractor. Defaults to 1.}
 
@@ -15,8 +16,16 @@ as_nps_cat(x, det = 1, pas = 2, pro = 3)
 
 \item{pro}{Numeric value to represent the code for Promoter. Defaults to 3.}
 }
+\value{
+a labelled double variable
+}
 \description{
 Returns a categorical variable with default values over 1, 2, and 3.
 Suited for running multinomial logistic regression.
 To calculate the NPS score, use \code{as_nps()}.
+}
+\examples{
+x <- sample(0:10, size = 50, replace = TRUE)
+as_nps_cat(x)
+
 }

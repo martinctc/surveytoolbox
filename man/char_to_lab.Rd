@@ -10,5 +10,7 @@ char_to_lab(x)
 \item{x}{Character vector to pass through}
 }
 \description{
-This function converts the character values into value labels, assigning each value an integer.
+This function converts the character values into value labels, assigning each
+value an integer. To achieve the same effect whilst prescribing a set of
+value-to-label mapping to the function, please see \code{char_to_var()}.
 }
