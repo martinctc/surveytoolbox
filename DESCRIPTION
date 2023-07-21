@@ -4,8 +4,8 @@ Title: Useful Support Functions for Survey Analysis
 Version: 0.1.0.9000
 Author: Martin Chan
 Maintainer: Martin Chan <martinchan53@gmail.com>
-URL: https://github.com/martinctc/surveytoolbox
-Description: A R package containing useful support functions for survey analysis.
+URL: https://github.com/martinctc/surveytoolbox/
+Description: A collection of tools for analyzing and visualizing survey data in R. It includes functions for manipulating labels, creating data dictionaries, converting variable types, and more. 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
