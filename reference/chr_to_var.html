@@ -63,7 +63,7 @@ labels (<code>var_label</code>) provided by the user.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">chr_to_var</span><span class="op">(</span><span class="va">var</span>, <span class="va">lab_str</span>, <span class="va">lab_num</span>, <span class="va">var_label</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">chr_to_var</span><span class="op">(</span><span class="va">var</span>, <span class="va">lab_str</span>, <span class="va">lab_num</span>, <span class="va">var_label</span>, na <span class="op">=</span> <span class="st">"&lt;N/A&gt;"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -87,6 +87,11 @@ determine the mapping.</p></dd>
 <dd><p>string to be used as the variable label, passed through to
 <code><a href="set_varl.html">set_varl()</a></code>.</p></dd>
 
+
+<dt>na</dt>
+<dd><p>string to replace missing values with as a value label. Defaults to
+<code>"&lt;N/A&gt;"</code>. Set to <code>NULL</code> to not replace missing values.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -103,11 +108,11 @@ determine the mapping.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"Not sure"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"Not sure"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">lab1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">99</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">q1_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">var1</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Convert to labelled double</span></span></span>
 <span class="r-in"><span><span class="fu">chr_to_var</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  var <span class="op">=</span> <span class="va">q1_var</span>,</span></span>
 <span class="r-in"><span>  lab_str <span class="op">=</span> <span class="va">var1</span>,</span></span>
@@ -115,16 +120,44 @@ determine the mapping.</p></dd>
 <span class="r-in"><span>  var_label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Have you come across this product previously?"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;labelled&lt;double&gt;[100]&gt;: Have you come across this product previously?</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]  0  1 99  0 99 99  0  0  1 99 99  1 99  1 99 99 99  1  0 99  0  0  1  0 99</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [26]  1 99  0  0  0 99  0 99  0 99 99  0  1  0 99 99 99  1  0  1  1  0  0  0  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [51]  0 99  0  1  1  0  1  0 99  1  1  1  1  1  0  1 99  1  0  0 99  0  1  1  1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] 99  1  1  1  1  0 99  0 99  1 99 99 99  1 99  0 99  0  0 99  1 99  1  0  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]  0 99  0  0  0  0  0  1  0 99  0 99 99  1  1  1  0 99 99  1  0  0 99  1  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [26] 99  1 99  0  1  0  1 99  1  0 99 99  1 99  0 99 99  1  0  0  0 99  0  0 99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51]  0  0  0 99  0 99  1  1  1  0  1 99  1  1  0  1 99 99  0  0  1  1  1  0  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76] 99 99 99  0  0  1  1 99 99 99  1  0  0 99 99  1  1  0 99 99  0 99  1  1 99</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Labels:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  value    label</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      1      Yes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      0       No</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     99 Not sure</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example with missing values</span></span></span>
+<span class="r-in"><span><span class="co"># Generate variable with missing values</span></span></span>
+<span class="r-in"><span><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="cn">NA</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">q1_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">var1</span>, <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Variable and value labels</span></span></span>
+<span class="r-in"><span><span class="va">var1b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"&lt;N/A&gt;"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lab1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">99</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Convert to labelled double</span></span></span>
+<span class="r-in"><span><span class="fu">chr_to_var</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  var <span class="op">=</span> <span class="va">q1_var</span>,</span></span>
+<span class="r-in"><span>  lab_str <span class="op">=</span> <span class="va">var1b</span>,</span></span>
+<span class="r-in"><span>  lab_num <span class="op">=</span> <span class="va">lab1</span>,</span></span>
+<span class="r-in"><span>  var_label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Have you come across this product previously?"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;labelled&lt;double&gt;[100]&gt;: Have you come across this product previously?</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1]  1  0  1 99  0  0  0  1  0  0 99  1 99 99 99  0 99  0  0 99 99  1  1  1  1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [26] 99 99 99 99 99  1  0 99  1 99  1  0  1  0  1  0  1  0 99 99  1  1 99  0  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51] 99 99 99 99 99 99 99  0 99  1  1  1  1 99  1  0 99  0  0 99 99  1 99  0  0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [76]  0  0  1 99  1  0  1  1  0 99  1  0  0  0 99 99  0  1 99  0  0  0 99  0 99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Labels:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  value label</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1   Yes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      0    No</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     99 &lt;N/A&gt;</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
