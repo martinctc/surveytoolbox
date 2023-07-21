@@ -5,7 +5,7 @@
 \title{Convert a string / character variable into a labelled double variable,
 using a pre-specified set of variable and value label mappings.}
 \usage{
-chr_to_var(var, lab_str, lab_num, var_label, na = "<N/A>")
+chr_to_var(var, lab_str, lab_num, var_label, na = "<N/A>", wrap = 100)
 }
 \arguments{
 \item{var}{string vector containing the variable}
@@ -22,6 +22,10 @@ determine the mapping.}
 
 \item{na}{string to replace missing values with as a value label. Defaults to
 \code{"<N/A>"}. Set to \code{NULL} to not replace missing values.}
+
+\item{wrap}{numeric value to apply a text wrap to value labels for plotting
+aesthetics. The numeric value determines the number of minimum characters
+before the next space before adding a new line (\verb{\\n}). Defaults to 100.}
 }
 \value{
 a labelled double variable

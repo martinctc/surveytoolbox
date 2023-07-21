@@ -22,6 +22,9 @@
 #' `set_varl()`.
 #' @param na string to replace missing values with as a value label. Defaults to
 #' `"<N/A>"`. Set to `NULL` to not replace missing values. 
+#' @param wrap numeric value to apply a text wrap to value labels for plotting
+#'   aesthetics. The numeric value determines the number of minimum characters
+#'   before the next space before adding a new line (`\n`). Defaults to 100.
 #' 
 #' @return a labelled double variable
 #' 
@@ -57,7 +60,10 @@
 #' 
 #' @export             
 
-chr_to_var <- function(var, lab_str, lab_num, var_label, na = "<N/A>") {
+chr_to_var <- function(var, lab_str, lab_num, var_label, na = "<N/A>", wrap = 100) {
+  
+  lab_str <- wrap_text(lab_str, threshold = wrap)
+  var <- wrap_text(var, threshold = wrap)
   
   table <- data.frame(var = lab_str, return = lab_num)
   nm_list <- surveytoolbox::create_named_list(x = lab_str, y = lab_num)
@@ -68,5 +74,5 @@ chr_to_var <- function(var, lab_str, lab_num, var_label, na = "<N/A>") {
   var <- surveytoolbox::set_vall(var, value_labels = nm_list)
   var <- surveytoolbox::set_varl(var, var_label)
   
-  return(var)
+  var
 }
