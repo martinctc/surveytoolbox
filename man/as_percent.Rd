@@ -16,4 +16,5 @@ Convert a numeric value into a string with percentage sign.
 }
 \examples{
 as_percent(.86748)
+
 }

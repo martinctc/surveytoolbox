@@ -2,22 +2,32 @@
 % Please edit documentation in R/box_it.R
 \name{box_it}
 \alias{box_it}
-\title{Convert ordinal variables into binary variables by "boxing"}
+\title{Convert ordinal variables into binary variables by creating top or bottom n
+'box' categories}
 \usage{
 box_it(x, which = "top", number = 2)
 }
 \arguments{
 \item{x}{Variable to be passed through}
 
-\item{which}{Character string to specify which end of spectrum to take values - valid inputs are "top" and "bottom"}
+\item{which}{Character string to specify which end of spectrum to take values
+\itemize{
+\item valid inputs are "top" and "bottom".
+}}
 
-\item{number}{Number to take values from}
+\item{number}{integer value indicating the n to take values from, e.g. 'top
+n box' or 'bottom n box'}
 }
 \description{
-For instance, you can create a Top Two Box variable from a 7-point agreement scale question.
-Function returns a labelled double variable, which will have value label attributes.
+For instance, you can create a Top Two Box variable from a 7-point agreement
+scale question. Function returns a labelled double variable, which will have
+value label attributes.
 }
 \examples{
-box_it(sample(1:10,100,replace = TRUE)) # Converted to binary variable where 9, 10 are selected
+# Converted to binary variable where 9, 10 are selected
+box_it(sample(1:10,100,replace = TRUE)) 
+
+# Example with missing values
 box_it(sample(c(1:10, NA),100,replace = TRUE))
+
 }
