@@ -4,20 +4,51 @@
 \alias{box_it}
 \title{Convert ordinal variables into binary variables by "boxing"}
 \usage{
-box_it(x, which = "top", number = 2)
+box_it(
+  x,
+  which = "top",
+  number = 2,
+  replace_na = NULL,
+  lab_str = c("Selected", "Not selected", "Missing value"),
+  var_label = paste0(which, number)
+)
 }
 \arguments{
 \item{x}{Variable to be passed through}
 
 \item{which}{Character string to specify which end of spectrum to take values - valid inputs are "top" and "bottom"}
 
-\item{number}{Number to take values from}
+\item{number}{integer value indicating the n to take values from, e.g. 'top
+n box' or 'bottom n box'}
+
+\item{replace_na}{numeric vector. These values from the variable are replaced
+with \code{NA_real_}.}
+
+\item{lab_str}{string vector of length 3 containing the labels for the output
+binary variable. The first value maps to 1 (box selected), the second
+value maps to 0 (box not selected), and the third values maps to missing
+values.}
+
+\item{var_label}{string to be used as the variable label, passed through to
+\code{set_varl()}.}
+}
+\value{
+a binary variable of labelled double type.
 }
 \description{
-For instance, you can create a Top Two Box variable from a 7-point agreement scale question.
-Function returns a labelled double variable, which will have value label attributes.
+For instance, you can create a Top Two Box variable from a 7-point agreement
+scale question. Function returns a labelled double binary variable, which
+will have value label attributes.
 }
 \examples{
 box_it(sample(1:10,100,replace = TRUE)) # Converted to binary variable where 9, 10 are selected
 box_it(sample(c(1:10, NA),100,replace = TRUE))
+
+# Example where specified numeric values are replaced with NAs
+summary(
+  box_it(
+    sample(c(1:10, 99), 100, replace = TRUE),
+    replace_na = 99)
+  )
+
 }
