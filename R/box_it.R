@@ -18,6 +18,9 @@
 #'   values.
 #' @param var_label string to be used as the variable label, passed through to
 #' `set_varl()`.
+#' @param na_val numeric value or NULL, defaults to 99. When set to a number,
+#'   this is the number that is used to represent missing values. When set to
+#'   NULL, missing values would be stored as `NA_real_` type.
 #' 
 #' @return a binary variable of labelled double type.
 #' 
@@ -39,7 +42,8 @@ box_it <-
            number = 2,
            replace_na = NULL,
            lab_str = c("Selected", "Not selected", "Missing value"),
-           var_label = paste0(which, number)) {
+           var_label = paste0(which, number),
+           na_val = 99) {
   
   # replace numeric values with NA
   if(!is.null(replace_na)){
@@ -55,14 +59,27 @@ box_it <-
     valid_range <- min_x:(min_x + number - 1)
   }
   
-  output <-
-    dplyr::case_when(is.na(x) ~ NA_real_,
-                   x %in% valid_range ~ 1,
-                   !(x %in% valid_range) ~ 0,
-                   TRUE~NA_real_)
-  
-  attr(output, 'labels') <- stats::setNames(c(1, 0, NA_real_), lab_str)
-  
+  if(is.null(na_val)){
+    
+    output <-
+      dplyr::case_when(is.na(x) ~ NA_real_,
+                       x %in% valid_range ~ 1,
+                       !(x %in% valid_range) ~ 0,
+                       TRUE~NA_real_)
+    
+    attr(output, 'labels') <- stats::setNames(c(1, 0, NA_real_), lab_str)
+    
+  } else {
+    
+    output <-
+      dplyr::case_when(is.na(x) ~ NA_real_,
+                       x %in% valid_range ~ 1,
+                       !(x %in% valid_range) ~ 0,
+                       TRUE ~ na_val)
+    
+    attr(output, 'labels') <- stats::setNames(c(1, 0,  na_val), lab_str)
+    
+  }
   
   # Set variable labels and make this a labelled double object
   output <- set_varl(output, var_label)

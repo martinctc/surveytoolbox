@@ -10,7 +10,8 @@ box_it(
   number = 2,
   replace_na = NULL,
   lab_str = c("Selected", "Not selected", "Missing value"),
-  var_label = paste0(which, number)
+  var_label = paste0(which, number),
+  na_val = 99
 )
 }
 \arguments{
@@ -34,6 +35,10 @@ values.}
 
 \item{var_label}{string to be used as the variable label, passed through to
 \code{set_varl()}.}
+
+\item{na_val}{numeric value or NULL, defaults to 99. When set to a number,
+this is the number that is used to represent missing values. When set to
+NULL, missing values would be stored as \code{NA_real_} type.}
 }
 \value{
 a binary variable of labelled double type.
