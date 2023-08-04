@@ -61,11 +61,14 @@ box_it <-
                    !(x %in% valid_range) ~ 0,
                    TRUE~NA_real_)
   
-  attr(output, 'labels') <- setNames(c(1, 0, NA_real_), lab_str)
+  attr(output, 'labels') <- stats::setNames(c(1, 0, NA_real_), lab_str)
   
   
+  # Set variable labels and make this a labelled double object
   output <- set_varl(output, var_label)
+  output <- haven::labelled(output, labels = attr(output, 'labels'))
   
+  # Diagnostic messages
   range_print <- paste0(valid_range,collapse=", ")
   message(paste0("Converted to binary variable where ",
                  range_print,

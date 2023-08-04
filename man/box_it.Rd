@@ -16,7 +16,10 @@ box_it(
 \arguments{
 \item{x}{Variable to be passed through}
 
-\item{which}{Character string to specify which end of spectrum to take values - valid inputs are "top" and "bottom"}
+\item{which}{Character string to specify which end of spectrum to take values
+\itemize{
+\item valid inputs are "top" and "bottom".
+}}
 
 \item{number}{integer value indicating the n to take values from, e.g. 'top
 n box' or 'bottom n box'}
