@@ -2,7 +2,7 @@
 % Please edit documentation in R/extract_fa_loads.R
 \name{extract_fa_loads}
 \alias{extract_fa_loads}
-\title{Function to create a loadings file from the factanal() output}
+\title{Function to create a loadings file from the \code{stats::factanal()} output}
 \usage{
 extract_fa_loads(fa_object)
 }
@@ -10,10 +10,13 @@ extract_fa_loads(fa_object)
 \item{fa_object}{factanal() model}
 }
 \description{
-Function to create a loadings file from the factanal() output
+Function to create a loadings file from the \code{stats::factanal()} output
 }
 \examples{
-fa_output <- factanal(tidyr::drop_na(psych::bfi), factors = 6)
+fa_output <- stats::factanal(
+  tidyr::drop_na(psych::bfi),
+  factors = 6
+  )
 extract_fa_loads(fa_output)
 }
 \keyword{analysis}

@@ -1,12 +1,19 @@
-#' Function to create a loadings file from the factanal() output
+#' @title 
+#' Function to create a loadings file from the `stats::factanal()` output
 #' 
 #' @param fa_object factanal() model
 #' @keywords factor analysis
+#' 
+#' 
 #' @examples 
-#' fa_output <- factanal(tidyr::drop_na(psych::bfi), factors = 6)
+#' fa_output <- stats::factanal(
+#'   tidyr::drop_na(psych::bfi),
+#'   factors = 6
+#'   )
 #' extract_fa_loads(fa_output)
 #' @export
 extract_fa_loads <-function(fa_object){
+  
   loadings_object <- as.matrix(fa_object$loadings)
   
   # Find max and return column header
