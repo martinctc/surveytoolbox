@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' data("mtcars")
-#' test_catcat(mtcars, "cyl", "vs")
+#' test_chisq(mtcars, "cyl", "vs")
 #'
 #' @importFrom rstatix chisq_test
 #' @importFrom stats fisher.test

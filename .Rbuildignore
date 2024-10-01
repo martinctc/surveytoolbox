@@ -4,3 +4,4 @@
 ^icons$
 ^_development$
 ^\.github$
+^_pkgdown.yml$

@@ -25,6 +25,8 @@ Imports:
     magrittr,
     purrr,
     glue,
-    data.table
+    data.table,
+    broom,
+    rstatix
 Suggests: 
     testthat
