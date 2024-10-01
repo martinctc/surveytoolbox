@@ -9,11 +9,15 @@ create_freq_dist(data, metric)
 \arguments{
 \item{data}{A data frame containing the data}
 
-\item{metric}{The name of the metric for which the frequency distribution is
-to be created}
+\item{metric}{string specifying the name of the metric for which the
+frequency distribution is to be created}
 }
 \description{
 This function creates a frequency distribution table for a given
 metric. The table contains the bin ranges and the counts of the data points
 that fall within each bin.
+}
+\examples{
+create_freq_dist(iris, "Sepal.Length")
+
 }

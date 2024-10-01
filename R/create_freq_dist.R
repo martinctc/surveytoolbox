@@ -5,8 +5,11 @@
 #'   that fall within each bin.
 #'
 #' @param data A data frame containing the data
-#' @param metric The name of the metric for which the frequency distribution is
-#'   to be created
+#' @param metric string specifying the name of the metric for which the
+#'   frequency distribution is to be created
+#' 
+#' @examples
+#' create_freq_dist(iris, "Sepal.Length")
 #' 
 #' @export
 create_freq_dist <- function(data, metric){
