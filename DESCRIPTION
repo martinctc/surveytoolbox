@@ -9,7 +9,7 @@ Description: A collection of tools for analyzing and visualizing survey data in 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Imports: 
     base,
