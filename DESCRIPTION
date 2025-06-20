@@ -12,7 +12,6 @@ LazyData: true
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Imports: 
-    base,
     dplyr,
     stringr,
     stats,
@@ -21,17 +20,19 @@ Imports:
     readr,
     haven,
     tidyr,
-    psych,
     magrittr,
     purrr,
     glue,
     data.table,
     broom,
-    rstatix
+    rstatix,
+    graphics,
+    rlang
 Suggests: 
     testthat (>= 3.0.0),
     knitr,
     rmarkdown,
-    ggplot2
+    ggplot2,
+    psych
 Config/testthat/edition: 3
 VignetteBuilder: knitr

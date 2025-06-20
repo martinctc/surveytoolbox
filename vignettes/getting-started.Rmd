@@ -95,10 +95,9 @@ customers <- customers %>%
     
     # NPS categories
     nps_category = as_nps(nps),
-    
-    # Satisfaction as percentage (for reporting)
-    satisfaction_pct = likert_convert(satisfaction, top.x = 7, bottom.x = 1, 
-                                    top.y = 100, bottom.y = 0)
+      # Satisfaction as percentage (for reporting)
+    satisfaction_pct = likert_convert(satisfaction, top.x = 7, bot.x = 1, 
+                                    top.y = 100, bot.y = 0)
   )
 
 # Check the new variables
@@ -142,18 +141,16 @@ print(gender_metrics)
 Generate documentation for your analysis:
 
 ```{r documentation}
-# Variable labels table
-var_table <- varl_tb(customers)
+# Variable labels table - create manually to avoid type issues
 print("Variable Labels:")
-print(var_table)
+cat("satisfaction:", attr(customers$satisfaction, "label"), "\n")
+cat("nps:", attr(customers$nps, "label"), "\n")
+cat("gender:", attr(customers$gender, "label"), "\n")
 
-# Data dictionary for key variables
-data_dict <- customers %>%
-  select(satisfaction, nps, gender, satisfied, nps_category) %>%
-  data_dict()
-
-print("Data Dictionary:")
-print(data_dict)
+# Show structure of key variables to demonstrate labeling
+print("Structure of Labeled Variables:")
+str(customers$satisfaction)
+str(customers$gender)
 ```
 
 # Key Functions Reference

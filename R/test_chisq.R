@@ -42,16 +42,15 @@ test_chisq <- function(data, x, y, na_x = NULL, na_y = NULL){
   expected_counts <-
     chisq.test(table(data2[[x]], data2[[y]]))$expected %>%
     suppressWarnings()
-  
-  if (any(expected_counts < 5)) {
+    if (any(expected_counts < 5)) {
     # Use Fisher's exact test if expected cell counts are low
     result <- fisher.test(x = factor(stat_x), y = factor(stat_y)) %>%
-      broom::tidy(out) %>% # Return a data frame
+      broom::tidy() %>% # Return a data frame
       mutate(n = NA,
              statistic = NA,
              df = NA,
-             `p.signif` = NA,
-             p = `p.value`) %>%
+             p.signif = NA,
+             p = .data$p.value) %>%
       select(
         n, 
         statistic,

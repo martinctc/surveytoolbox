@@ -209,8 +209,8 @@ Convert between different scale ranges (e.g., 7-point to 10-point scale).
 # Convert 7-point satisfaction to 10-point scale
 satisfaction_10pt <- likert_convert(
   survey_data$satisfaction, 
-  top.x = 7, bottom.x = 1,    # Original scale
-  top.y = 10, bottom.y = 1    # New scale
+  top.x = 7, bot.x = 1,    # Original scale
+  top.y = 10, bot.y = 1    # New scale
 )
 
 # Show conversion
