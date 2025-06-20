@@ -25,11 +25,29 @@ box_it(
 
 \item{number}{integer value indicating the n to take values from, e.g. 'top
 n box' or 'bottom n box'}
+
+\item{replace_na}{numeric vector. These values from the variable are replaced
+with \code{NA_real_}.}
+
+\item{lab_str}{string vector of length 3 containing the labels for the output
+binary variable. The first value maps to 1 (box selected), the second
+value maps to 0 (box not selected), and the third values maps to missing
+values.}
+
+\item{var_label}{string to be used as the variable label, passed through to
+\code{set_varl()}.}
+
+\item{na_val}{numeric value or NULL, defaults to 99. When set to a number,
+this is the number that is used to represent missing values. When set to
+NULL, missing values would be stored as \code{NA_real_} type.}
+}
+\value{
+a binary variable of labelled double type.
 }
 \description{
 For instance, you can create a Top Two Box variable from a 7-point agreement
-scale question. Function returns a labelled double variable, which will have
-value label attributes.
+scale question. Function returns a labelled double binary variable, which
+will have value label attributes.
 }
 \examples{
 # Converted to binary variable where 9, 10 are selected
@@ -37,5 +55,12 @@ box_it(sample(1:10,100,replace = TRUE))
 
 # Example with missing values
 box_it(sample(c(1:10, NA),100,replace = TRUE))
+
+# Example where specified numeric values are replaced with NAs
+summary(
+  box_it(
+    sample(c(1:10, 99), 100, replace = TRUE),
+    replace_na = 99)
+  )
 
 }
