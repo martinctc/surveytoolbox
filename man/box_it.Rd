@@ -5,7 +5,15 @@
 \title{Convert ordinal variables into binary variables by creating top or bottom n
 'box' categories}
 \usage{
-box_it(x, which = "top", number = 2)
+box_it(
+  x,
+  which = "top",
+  number = 2,
+  replace_na = NULL,
+  lab_str = c("Selected", "Not selected", "Missing value"),
+  var_label = paste0(which, number),
+  na_val = 99
+)
 }
 \arguments{
 \item{x}{Variable to be passed through}
