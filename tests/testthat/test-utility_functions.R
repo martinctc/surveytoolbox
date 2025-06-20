@@ -28,22 +28,21 @@ test_that("likert_reverse handles NA values", {
   expect_equal(result[3], 1)
 })
 
-test_that("squish limits values correctly", {
-  x <- c(-5, 0, 5, 10, 15)
-  result <- squish(x, range = c(0, 10))
-  expected <- c(0, 0, 5, 10, 10)  # Values outside range are squished to limits
-  expect_equal(result, expected)
+test_that("squish returns single value when all identical", {
+  x <- c(1, 1, 1, 1)
+  result <- squish(x)
+  expect_equal(result, 1)
+  expect_length(result, 1)
 })
 
-test_that("squish handles different ranges", {
-  x <- c(1, 2, 3, 4, 5)
-  result <- squish(x, range = c(2, 4))
-  expected <- c(2, 2, 3, 4, 4)  # 1->2, 5->4, others unchanged
-  expect_equal(result, expected)
+test_that("squish throws error when values differ", {
+  x <- c(1, 2, 3)
+  expect_error(squish(x), "More than one unique value")
 })
 
-test_that("squish preserves values within range", {
-  x <- c(2, 3, 4)
-  result <- squish(x, range = c(1, 5))
-  expect_equal(result, x)  # All values within range, no change
+test_that("squish works with character vectors", {
+  x <- c("A", "A", "A")
+  result <- squish(x)
+  expect_equal(result, "A")
+  expect_length(result, 1)
 })

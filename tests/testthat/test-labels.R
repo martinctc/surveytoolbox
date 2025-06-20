@@ -10,7 +10,8 @@ test_that("set_varl preserves data", {
   x <- c(1, 2, NA, 4)
   result <- set_varl(x, "Variable with NA")
   
-  expect_equal(result, x)
+  # Check that the underlying data is preserved (ignoring attributes)
+  expect_equal(as.numeric(result), as.numeric(x))
   expect_equal(attr(result, "label"), "Variable with NA")
 })
 
