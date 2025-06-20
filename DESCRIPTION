@@ -29,5 +29,9 @@ Imports:
     broom,
     rstatix
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    ggplot2
 Config/testthat/edition: 3
+VignetteBuilder: knitr
