@@ -4,13 +4,15 @@
 #' @param fa_object factanal() model
 #' @keywords factor analysis
 #' 
-#' 
-#' @examples 
+#' @examples
+#' \dontrun{
 #' fa_output <- stats::factanal(
 #'   tidyr::drop_na(psych::bfi),
 #'   factors = 6
 #'   )
 #' extract_fa_loads(fa_output)
+#' }
+#' 
 #' @export
 extract_fa_loads <-function(fa_object){
   

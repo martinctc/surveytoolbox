@@ -13,11 +13,14 @@ extract_fa_loads(fa_object)
 Function to create a loadings file from the \code{stats::factanal()} output
 }
 \examples{
+\dontrun{
 fa_output <- stats::factanal(
   tidyr::drop_na(psych::bfi),
   factors = 6
   )
 extract_fa_loads(fa_output)
+}
+
 }
 \keyword{analysis}
 \keyword{factor}

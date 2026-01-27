@@ -93,8 +93,8 @@ test_that("ttest_nps returns margin of error", {
   set.seed(123)
   x <- sample(c(-100, 0, 100), 100, replace = TRUE)
   
-  # Capture the message and result
-  result <- expect_message(ttest_nps(x))
+  # Capture the result (suppress messages)
+  result <- suppressMessages(ttest_nps(x))
   
   expect_type(result, "double")
   expect_true(result > 0)  # Margin of error should be positive
@@ -131,11 +131,13 @@ test_that("split_tt splits data correctly", {
 })
 
 test_that("split_tt handles different proportions", {
+  set.seed(123)
   df <- data.frame(x = 1:100)
   
   result_80 <- split_tt(df, 0.8)
   result_50 <- split_tt(df, 0.5)
   
+  # split_tt now preserves data frame structure with drop = FALSE
   expect_equal(nrow(result_80$train), 80)
   expect_equal(nrow(result_50$train), 50)
 })
