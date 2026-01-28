@@ -13,6 +13,10 @@ cor_to_df(cor_m, label_table = NULL, id = NULL)
 
 \item{id}{A character vector specifying the name of the matching / id column in the label_table.}
 }
+\value{
+A tibble representation of the correlation matrix, optionally with
+variable labels matched from the label table.
+}
 \description{
 This function assumes that the input into cor() uses variable names, and available
 variable labels are not used.

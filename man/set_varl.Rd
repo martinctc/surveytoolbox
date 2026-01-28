@@ -11,6 +11,9 @@ set_varl(x, variable_label)
 
 \item{variable_label}{String vector to be assigned as the variable label}
 }
+\value{
+The input variable \code{x} with the variable label attribute set.
+}
 \description{
 A pipe-workflow optimised method to set variable labels.
 }
@@ -19,11 +22,11 @@ library(tibble)
 library(dplyr)
 library(magrittr)
 df <-
-tibble(RESPID=1:1000,
-       Q1=sample(c(0,1,2),1000,replace=TRUE),
-       Q2=sample(c(0,1),1000,replace=TRUE))
+tibble(RESPID = 1:1000,
+       Q1 = sample(c(0, 1, 2), 1000, replace = TRUE),
+       Q2 = sample(c(0, 1), 1000, replace = TRUE))
 df \%>\%
-  mutate_at("Q1",funs(set_varl(.,"Which of the following groups do you fall into?"))) \%>\%
+  mutate(Q1 = set_varl(Q1, "Which of the following groups do you fall into?")) \%>\%
   .$Q1
 }
 \seealso{

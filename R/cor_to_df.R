@@ -10,6 +10,10 @@
 #' @param cor_m Correlation matrix in the form of an output from cor().
 #' @param label_table A two-column table with one column used for matching and the other for returning labels.
 #' @param id A character vector specifying the name of the matching / id column in the label_table.
+#' 
+#' @return A tibble representation of the correlation matrix, optionally with
+#'   variable labels matched from the label table.
+#'   
 #' @export
 cor_to_df <- function(cor_m, label_table = NULL, id = NULL){
   if(is.null(label_table) | is.null(id)){

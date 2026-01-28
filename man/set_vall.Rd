@@ -11,6 +11,9 @@ set_vall(x, value_labels)
 
 \item{value_labels}{Named character vector to be assigned as value labels}
 }
+\value{
+The input variable \code{x} as a labelled vector with value labels set.
+}
 \description{
 A pipe-workflow optimised method to set value labels.
 This is a wrapper around \code{haven::labelled()}, but preserves
@@ -21,12 +24,12 @@ the original variable label of the vector.
 library(magrittr)
 library(dplyr)
 library(tibble)
-tibble(RESPID=1:1000,
-       Q1=sample(c(0,1,2),1000,replace=TRUE),
-       Q2=sample(c(0,1),1000,replace=TRUE))-> df
+tibble(RESPID = 1:1000,
+       Q1 = sample(c(0, 1, 2), 1000, replace = TRUE),
+       Q2 = sample(c(0, 1), 1000, replace = TRUE)) -> df
 df \%>\%
-  mutate_at("Q2",funs(set_varl(.,"What is your answer to this yes/no question?"))) \%>\%
-  mutate_at("Q2",funs(set_vall(.,c("No"=0,"Yes"=1)))) \%>\%
+  mutate(Q2 = set_varl(Q2, "What is your answer to this yes/no question?")) \%>\%
+  mutate(Q2 = set_vall(Q2, c("No" = 0, "Yes" = 1))) \%>\%
   .$Q2 \%>\% attributes()
 }
 \seealso{
