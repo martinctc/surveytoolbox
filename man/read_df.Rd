@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_df.R
 \name{read_df}
 \alias{read_df}
-\title{Read in a data frame in the clipboard, copied from Excel}
+\title{Read in a data frame from the clipboard, copied from Excel}
 \usage{
 read_df(header = TRUE, ...)
 }
@@ -11,6 +11,13 @@ read_df(header = TRUE, ...)
 
 \item{...}{Additional arguments for read.table().}
 }
+\value{
+A data frame containing the clipboard contents.
+}
 \description{
-Read in a data frame in the clipboard, copied from Excel
+Read in a data frame from the clipboard, copied from Excel
+}
+\note{
+This function only works on Windows. On other platforms, it will
+stop with an error.
 }

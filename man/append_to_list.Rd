@@ -11,13 +11,15 @@ append_to_list(x, list_x, name = "", enviro = .GlobalEnv)
 
 \item{list_x}{Target list to append object to.}
 
-\item{name}{Specify a character string for the name of the list. Defaults to blank}
+\item{name}{character string for the name of the list. Defaults to
+a blank string}
 
 \item{enviro}{Specifies the environment}
 }
 \description{
-The \code{append_to_list()} function appends an object to the specified list in Global Environment (default).
-This function is pipe-optimised, and allows the option of specifying a name for the new object in the list.
+The \code{append_to_list()} function appends an object to the specified list in
+Global Environment (default). This function is pipe-optimised, and allows the
+option of specifying a name for the new object in the list.
 }
 \examples{
 a_list <- list(NULL)

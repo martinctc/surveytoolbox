@@ -2,7 +2,8 @@
 % Please edit documentation in R/box_it.R
 \name{box_it}
 \alias{box_it}
-\title{Convert ordinal variables into binary variables by "boxing"}
+\title{Convert ordinal variables into binary variables by creating top or bottom n
+'box' categories}
 \usage{
 box_it(
   x,
@@ -49,7 +50,10 @@ scale question. Function returns a labelled double binary variable, which
 will have value label attributes.
 }
 \examples{
-box_it(sample(1:10,100,replace = TRUE)) # Converted to binary variable where 9, 10 are selected
+# Converted to binary variable where 9, 10 are selected
+box_it(sample(1:10,100,replace = TRUE)) 
+
+# Example with missing values
 box_it(sample(c(1:10, NA),100,replace = TRUE))
 
 # Example where specified numeric values are replaced with NAs

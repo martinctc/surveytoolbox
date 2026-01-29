@@ -6,6 +6,10 @@
 #' @param select_helpers Uses dplyr-style select functions to select multiple variables. 
 #' Use everything() to select all variables. These variables must all be character type.
 #' @family superspread functions
+#' 
+#' @return A tibble with the original columns plus new dummy variable columns for each
+#'   unique value found in the selected categorical variables.
+#'   
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' @importFrom data.table :=

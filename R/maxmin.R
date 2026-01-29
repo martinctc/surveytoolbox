@@ -1,7 +1,9 @@
-#' Max-Min Scaling Function
+#' @title Max-Min Scaling Function
 #'
+#' @description 
 #' This function allows you to scale vectors or an entire data frame using the max-min scaling method
 #' A numeric vector is always returned.
+#' 
 #' @param x Pass a vector or the required columns of a data frame through this argument.
 #' @keywords max-min
 #' @export
@@ -15,6 +17,7 @@
 #' iris %>% mutate(Petal.Length2 = maxmin(Petal.Length))
 #' 
 #' maxmin(iris$Petal.Length)
+#' 
 #' @export
 maxmin <- function(x){
     if(any(is.na(x))){

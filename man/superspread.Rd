@@ -14,6 +14,10 @@ superspread(df, select_helpers)
 \item{select_helpers}{Uses dplyr-style select functions to select multiple variables.
 Use everything() to select all variables. These variables must all be character type.}
 }
+\value{
+A tibble with the original columns plus new dummy variable columns for each
+unique value found in the selected categorical variables.
+}
 \description{
 Creates dummy variables from multiple categorical variables.
 Uses data.table() for speed (enhanced from the previous version)

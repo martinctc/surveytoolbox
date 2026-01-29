@@ -1,0 +1,198 @@
+---
+title: "Getting Started with surveytoolbox"
+subtitle: "A quick introduction to survey data analysis"
+author: "surveytoolbox package"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Getting Started with surveytoolbox}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 4,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup}
+library(surveytoolbox)
+library(dplyr)
+library(tibble)
+
+# Set seed for reproducibility
+set.seed(42)
+```
+
+# Introduction
+
+The `surveytoolbox` package is designed to make survey data analysis in R easier and more consistent. This quick start guide covers the most essential functions you'll use in everyday survey analysis.
+
+# Quick Example: Customer Satisfaction Survey
+
+Let's work through a typical customer satisfaction survey analysis:
+
+```{r quick_example}
+# Create sample customer satisfaction data
+customers <- tibble(
+  customer_id = 1:100,
+  satisfaction = sample(1:7, 100, replace = TRUE, prob = c(0.05, 0.1, 0.15, 0.2, 0.25, 0.15, 0.1)),
+  nps = sample(0:10, 100, replace = TRUE),
+  gender = sample(1:2, 100, replace = TRUE),
+  age_group = sample(1:4, 100, replace = TRUE)
+)
+
+head(customers)
+```
+
+## Step 1: Add Labels
+
+Good survey analysis starts with proper labeling:
+
+```{r add_labels}
+# Add variable labels
+customers <- customers %>%
+  mutate(
+    satisfaction = set_varl(satisfaction, "Overall Satisfaction (1-7 scale)"),
+    nps = set_varl(nps, "Net Promoter Score (0-10)"),
+    gender = set_varl(gender, "Customer Gender"),
+    age_group = set_varl(age_group, "Age Group")
+  )
+
+# Add value labels
+customers <- customers %>%
+  mutate(
+    satisfaction = set_vall(satisfaction, c(
+      "Very dissatisfied" = 1, "Dissatisfied" = 2, "Somewhat dissatisfied" = 3,
+      "Neutral" = 4, "Somewhat satisfied" = 5, "Satisfied" = 6, "Very satisfied" = 7
+    )),
+    gender = set_vall(gender, c("Male" = 1, "Female" = 2)),
+    age_group = set_vall(age_group, c("18-29" = 1, "30-44" = 2, "45-59" = 3, "60+" = 4))
+  )
+
+# Check the labeling
+str(customers$satisfaction)
+```
+
+## Step 2: Create Key Metrics
+
+Transform raw scores into business metrics:
+
+```{r create_metrics}
+customers <- customers %>%
+  mutate(
+    # Top-2-box satisfaction (satisfied + very satisfied)
+    satisfied = box_it(satisfaction, which = "top", number = 2, 
+                      var_label = "Satisfied Customers (T2B)"),
+    
+    # NPS categories
+    nps_category = as_nps(nps),
+      # Satisfaction as percentage (for reporting)
+    satisfaction_pct = likert_convert(satisfaction, top.x = 7, bot.x = 1, 
+                                    top.y = 100, bot.y = 0)
+  )
+
+# Check the new variables
+table(customers$satisfied)
+table(customers$nps_category)
+```
+
+## Step 3: Calculate Summary Statistics
+
+Generate insights by demographic groups:
+
+```{r summary_stats}
+# Overall metrics
+overall_metrics <- customers %>%
+  summarise(
+    sample_size = n(),
+    satisfaction_rate = as_percent(mean(satisfied == 1, na.rm = TRUE), 1),
+    avg_nps = round(mean(nps_category, na.rm = TRUE), 1),
+    avg_satisfaction = round(mean(satisfaction_pct, na.rm = TRUE), 1)
+  )
+
+print("Overall Metrics:")
+print(overall_metrics)
+
+# By gender
+gender_metrics <- customers %>%
+  group_by(gender) %>%
+  summarise(
+    n = n(),
+    satisfaction_rate = as_percent(mean(satisfied == 1, na.rm = TRUE), 1),
+    avg_nps = round(mean(nps_category, na.rm = TRUE), 1),
+    .groups = 'drop'
+  )
+
+print("Metrics by Gender:")
+print(gender_metrics)
+```
+
+## Step 4: Create Data Documentation
+
+Generate documentation for your analysis:
+
+```{r documentation}
+# Variable labels table - create manually to avoid type issues
+print("Variable Labels:")
+cat("satisfaction:", attr(customers$satisfaction, "label"), "\n")
+cat("nps:", attr(customers$nps, "label"), "\n")
+cat("gender:", attr(customers$gender, "label"), "\n")
+
+# Show structure of key variables to demonstrate labeling
+print("Structure of Labeled Variables:")
+str(customers$satisfaction)
+str(customers$gender)
+```
+
+# Key Functions Reference
+
+## Essential Labeling Functions
+
+- `set_varl()`: Add descriptive variable labels
+- `set_vall()`: Add value labels to categorical variables
+- `varl_tb()`: Create a table of all variable labels
+- `data_dict()`: Generate comprehensive data dictionary
+
+## Survey Metrics Functions
+
+- `box_it()`: Create top-box/bottom-box binary variables
+- `as_nps()`: Convert 0-10 scores to NPS categories
+- `as_percent()`: Format numbers as percentages
+- `likert_convert()`: Convert between different scale ranges
+
+## Data Transformation Functions
+
+- `likert_reverse()`: Reverse-code Likert scale items
+- `maxmin()`: Normalize variables to 0-1 scale
+- `clean_strings()`: Clean text for variable names
+- `any_x()`: Enhanced any() function that handles all-NA cases properly
+
+# Best Practices
+
+1. **Always label your data**: Use `set_varl()` and `set_vall()` early in your workflow
+2. **Document your analysis**: Generate data dictionaries with `data_dict()`
+3. **Create business metrics**: Use `box_it()` for satisfaction rates, `as_nps()` for NPS analysis
+4. **Format for reporting**: Use `as_percent()` to create presentation-ready percentages
+5. **Handle missing data appropriately**: Use `any_x()` instead of base `any()` for survey data
+
+# Next Steps
+
+For more detailed examples and advanced functions, see the complete vignette:
+`vignette("surveytoolbox-walkthrough", package = "surveytoolbox")`
+
+The package includes many more functions for specific survey analysis tasks like factor analysis, scale reliability, and advanced data manipulation. Check the function reference for the complete list of available tools.
+
+---
+
+```{r session_info}
+sessionInfo()
+```

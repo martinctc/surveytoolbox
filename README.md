@@ -5,10 +5,6 @@
 
 R package containing tidy support functions for survey analysis.
 
-Currently under development! 
-(First created 29 Dec 2018)
-
-
 <img src="https://raw.githubusercontent.com/martinctc/surveytoolbox/master/icons/surveytoolbox_hex.svg" align="right" height = 150 width = 150/>
 
 ------------------------------------------------------------------------
@@ -44,8 +40,7 @@ There is also a convenience function (`apply_row()`) for performing rowwise oper
 
 ### Installation
 
-surveytoolbox is not released on CRAN (yet). 
-You can install the latest development version from GitHub with:
+You can install surveytoolbox from GitHub with:
 
 ```R
 install.packages("devtools")

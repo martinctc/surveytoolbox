@@ -15,6 +15,6 @@
 split_tt <-function(x, part){
   rowz <- nrow(x)
   samp <- sample(seq_len(rowz),floor(rowz * part))
-  output <-list("train"=x[samp,],"test"=x[-samp,])
+  output <-list("train"=x[samp, , drop = FALSE],"test"=x[-samp, , drop = FALSE])
   output
 }

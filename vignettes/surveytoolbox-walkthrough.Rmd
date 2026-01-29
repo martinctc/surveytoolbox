@@ -1,0 +1,641 @@
+---
+title: "Complete Guide to surveytoolbox"
+subtitle: "A comprehensive walkthrough of survey analysis functions"
+author: "surveytoolbox package"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
+vignette: >
+  %\VignetteIndexEntry{Complete Guide to surveytoolbox}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup, message=FALSE}
+library(surveytoolbox)
+library(dplyr)
+library(tibble)
+library(haven)
+library(purrr)
+library(ggplot2)
+
+# Set seed for reproducibility
+set.seed(123)
+```
+
+# Introduction
+
+The `surveytoolbox` package provides a comprehensive set of functions designed specifically for survey data analysis in R. This vignette demonstrates the key functions organized by their main use cases:
+
+1. **Data Labeling and Management**
+2. **Scale and Variable Transformations** 
+3. **Survey-Specific Calculations**
+4. **Data Cleaning and Preparation**
+5. **Utility and Helper Functions**
+
+Let's start by creating some sample survey data to demonstrate these functions.
+
+# Sample Survey Dataset
+
+```{r create_sample_data}
+# Create a sample survey dataset
+n <- 500
+
+survey_data <- tibble(
+  respondent_id = 1:n,
+  age = sample(18:80, n, replace = TRUE),
+  gender = sample(1:3, n, replace = TRUE, prob = c(0.45, 0.45, 0.1)),
+  satisfaction = sample(1:7, n, replace = TRUE, prob = c(0.05, 0.1, 0.15, 0.2, 0.25, 0.15, 0.1)),
+  nps_score = sample(0:10, n, replace = TRUE),
+  income = sample(1:5, n, replace = TRUE),
+  usage_freq = sample(1:5, n, replace = TRUE),
+  recommend = sample(1:2, n, replace = TRUE, prob = c(0.3, 0.7)),
+  brand_awareness_1 = sample(0:1, n, replace = TRUE, prob = c(0.6, 0.4)),
+  brand_awareness_2 = sample(0:1, n, replace = TRUE, prob = c(0.7, 0.3)),
+  brand_awareness_3 = sample(0:1, n, replace = TRUE, prob = c(0.8, 0.2)),
+  open_text = paste("Response", 1:n),
+  completion_time = runif(n, 5, 45)
+)
+
+head(survey_data)
+```
+
+# 1. Data Labeling and Management
+
+## Setting Variable Labels with `set_varl()`
+
+Variable labels provide descriptive names for your variables, essential for survey data documentation.
+
+```{r variable_labels}
+# Add variable labels to our survey data
+survey_labeled <- survey_data %>%
+  mutate(
+    respondent_id = set_varl(respondent_id, "Unique Respondent Identifier"),
+    age = set_varl(age, "Respondent Age in Years"),
+    gender = set_varl(gender, "Q1. What is your gender?"),
+    satisfaction = set_varl(satisfaction, "Q2. Overall satisfaction with our service"),
+    nps_score = set_varl(nps_score, "Q3. Net Promoter Score (0-10)"),
+    income = set_varl(income, "Q4. Annual household income bracket"),
+    usage_freq = set_varl(usage_freq, "Q5. How often do you use our service?"),
+    recommend = set_varl(recommend, "Q6. Would you recommend us to others?")
+  )
+
+# Check variable labels
+attr(survey_labeled$satisfaction, "label")
+attr(survey_labeled$nps_score, "label")
+```
+
+## Setting Value Labels with `set_vall()`
+
+Value labels map numeric codes to meaningful text descriptions.
+
+```{r value_labels}
+# Add value labels
+survey_labeled <- survey_labeled %>%
+  mutate(
+    gender = set_vall(gender, c("Male" = 1, "Female" = 2, "Other/Prefer not to say" = 3)),
+    satisfaction = set_vall(satisfaction, c(
+      "Extremely dissatisfied" = 1,
+      "Very dissatisfied" = 2,
+      "Somewhat dissatisfied" = 3,
+      "Neither satisfied nor dissatisfied" = 4,
+      "Somewhat satisfied" = 5,
+      "Very satisfied" = 6,
+      "Extremely satisfied" = 7
+    )),
+    income = set_vall(income, c(
+      "Under $25k" = 1,
+      "$25k-$50k" = 2,
+      "$50k-$75k" = 3,
+      "$75k-$100k" = 4,
+      "Over $100k" = 5
+    )),
+    usage_freq = set_vall(usage_freq, c(
+      "Never" = 1,
+      "Rarely" = 2,
+      "Sometimes" = 3,
+      "Often" = 4,
+      "Very often" = 5
+    )),
+    recommend = set_vall(recommend, c("No" = 1, "Yes" = 2))
+  )
+
+# Check the labelled structure
+str(survey_labeled$gender)
+```
+
+## Creating Variable Label Tables with `varl_tb()`
+
+This function creates a tidy data frame showing all variable labels in your dataset.
+
+```{r variable_table}
+# Create a variable label table
+var_labels <- varl_tb(survey_labeled)
+print(var_labels)
+```
+
+## Creating Data Dictionaries with `data_dict()`
+
+Generate comprehensive data dictionaries showing variable information, labels, and values.
+
+```{r data_dictionary}
+# Create a data dictionary for key survey variables
+survey_labeled %>%
+  select(gender, satisfaction, income, usage_freq, recommend) %>%
+  data_dict()
+```
+
+# 2. Scale and Variable Transformations
+
+## Creating Binary Variables with `box_it()`
+
+The `box_it()` function converts ordinal scales into binary "top box" or "bottom box" variables.
+
+```{r box_it_examples}
+# Create top-2-box satisfaction score
+satisfaction_t2b <- box_it(
+  survey_data$satisfaction, 
+  which = "top", 
+  number = 2,
+  var_label = "Satisfaction Top-2-Box (Very/Extremely Satisfied)"
+)
+
+# Create bottom-3-box (dissatisfied responses)
+satisfaction_b3b <- box_it(
+  survey_data$satisfaction,
+  which = "bottom",
+  number = 3,
+  var_label = "Satisfaction Bottom-3-Box (Dissatisfied)"
+)
+
+# Check results
+table(satisfaction_t2b, survey_data$satisfaction)
+```
+
+## Reversing Likert Scales with `likert_reverse()`
+
+Sometimes you need to reverse-code survey items for analysis.
+
+```{r likert_reverse}
+# Reverse a satisfaction scale (7-point to 1-point becomes 1-point to 7-point)
+satisfaction_reversed <- likert_reverse(survey_data$satisfaction, top = 7, bottom = 1)
+
+# Compare original and reversed
+comparison <- data.frame(
+  original = survey_data$satisfaction[1:10],
+  reversed = satisfaction_reversed[1:10]
+)
+print(comparison)
+```
+
+## Converting Likert Scales with `likert_convert()`
+
+Convert between different scale ranges (e.g., 7-point to 10-point scale).
+
+```{r likert_convert}
+# Convert 7-point satisfaction to 10-point scale
+satisfaction_10pt <- likert_convert(
+  survey_data$satisfaction, 
+  top.x = 7, bot.x = 1,    # Original scale
+  top.y = 10, bot.y = 1    # New scale
+)
+
+# Show conversion
+conversion_example <- data.frame(
+  original_7pt = survey_data$satisfaction[1:10],
+  converted_10pt = satisfaction_10pt[1:10]
+)
+print(conversion_example)
+```
+
+## Max-Min Scaling with `maxmin()`
+
+Normalize variables to a 0-1 scale using max-min normalization.
+
+```{r maxmin_scaling}
+# Scale age to 0-1 range
+age_scaled <- maxmin(survey_data$age)
+
+# Show original vs scaled
+scaling_example <- data.frame(
+  original_age = survey_data$age[1:10],
+  scaled_age = round(age_scaled[1:10], 3)
+)
+print(scaling_example)
+
+# Verify scaling worked correctly
+cat("Original age range:", min(survey_data$age), "to", max(survey_data$age), "\n")
+cat("Scaled age range:", round(min(age_scaled), 3), "to", round(max(age_scaled), 3), "\n")
+```
+
+# 3. Survey-Specific Calculations
+
+## Net Promoter Score (NPS) with `as_nps()`
+
+Convert 0-10 scores to NPS categories and calculate NPS.
+
+```{r nps_analysis}
+# Convert NPS scores to categories
+nps_categorized <- as_nps(survey_data$nps_score)
+
+# Check the labelled structure
+table(nps_categorized)
+
+# Calculate overall NPS (should be around 0 for our random data)
+overall_nps <- mean(nps_categorized, na.rm = TRUE)
+cat("Overall NPS:", round(overall_nps, 1), "\n")
+
+# NPS by gender
+nps_by_gender <- survey_labeled %>%
+  mutate(nps_cat = as_nps(nps_score)) %>%
+  group_by(gender) %>%
+  summarise(
+    nps = round(mean(nps_cat, na.rm = TRUE), 1),
+    n = n(),
+    .groups = 'drop'
+  )
+print(nps_by_gender)
+```
+
+## Alternative NPS Categories with `as_nps_cat()`
+
+Create custom NPS categories with different numeric codes.
+
+```{r nps_custom}
+# Create NPS categories with custom coding
+nps_custom <- as_nps_cat(
+  survey_data$nps_score,
+  det = 1,    # Detractors coded as 1
+  pas = 2,    # Passives coded as 2  
+  pro = 3     # Promoters coded as 3
+)
+
+table(nps_custom)
+```
+
+## CAGR Calculations with `CAGR()`
+
+Calculate Compound Annual Growth Rate - useful for longitudinal survey metrics.
+
+```{r cagr_example}
+# Example: Customer satisfaction improved from 60% to 75% over 3 years
+satisfaction_cagr <- CAGR(
+  value_begin = 60, 
+  value_end = 75, 
+  n_periods = 3
+)
+
+cat("Annual satisfaction improvement rate:", round(satisfaction_cagr * 100, 2), "%\n")
+
+# Example: NPS growth from 20 to 45 over 2 years
+nps_cagr <- CAGR(20, 45, 2)
+cat("Annual NPS growth rate:", round(nps_cagr * 100, 2), "%\n")
+```
+
+## Percentage Formatting with `as_percent()`
+
+Convert numeric values to formatted percentage strings.
+
+```{r as_percent}
+# Calculate satisfaction rates
+satisfaction_rates <- survey_labeled %>%
+  group_by(gender) %>%
+  summarise(
+    satisfied_rate = mean(satisfaction >= 5, na.rm = TRUE),
+    .groups = 'drop'
+  ) %>%
+  mutate(
+    satisfied_percent = as_percent(satisfied_rate, rounding = 1)
+  )
+
+print(satisfaction_rates)
+
+# Example with different rounding
+example_values <- c(0.1234, 0.5678, 0.9999)
+cat("No rounding:", as_percent(example_values), "\n")
+cat("1 decimal:", as_percent(example_values, rounding = 1), "\n")
+cat("2 decimals:", as_percent(example_values, rounding = 2), "\n")
+```
+
+# 4. Data Cleaning and Preparation
+
+## String Cleaning with `clean_strings()`
+
+Clean variable names and text for analysis and visualization.
+
+```{r clean_strings}
+# Example survey question texts
+messy_questions <- c(
+  "Q1. What is your gender?",
+  "Q23. Brand Awareness - Company A",
+  "Q45. Overall satisfaction (%)",
+  "'Net Promoter Score'",
+  "  Usage frequency  "
+)
+
+# Clean them for use as variable names
+clean_names <- clean_strings(messy_questions)
+print(data.frame(original = messy_questions, cleaned = clean_names))
+
+# Handle duplicates
+duplicate_questions <- c("Satisfaction", "Satisfaction", "Satisfaction")
+clean_dupes <- clean_strings(duplicate_questions, treat_dups = TRUE)
+print(clean_dupes)
+```
+
+## Text Wrapping with `wrap_text()`
+
+Wrap long text for better visualization in charts and tables.
+
+```{r wrap_text}
+# Wrap long question text for plotting
+long_questions <- c(
+  "Overall, how satisfied are you with our customer service experience?",
+  "Would you recommend our product to your friends and colleagues?",
+  "How likely are you to purchase from us again in the future?"
+)
+
+wrapped_questions <- wrap_text(long_questions, threshold = 30)
+cat("Original:\n", long_questions[1], "\n\n")
+cat("Wrapped:\n", wrapped_questions[1], "\n")
+```
+
+## Enhanced `any()` Function with `any_x()`
+
+A more nuanced version of `any()` that handles all-NA cases appropriately.
+
+```{r any_x_demo}
+# Example: Brand awareness across multiple brands
+brand_data <- tibble(
+  respondent = 1:6,
+  brand_a = c(1, 0, 1, NA, NA, 0),
+  brand_b = c(0, 1, 0, NA, NA, 1), 
+  brand_c = c(1, 1, 0, NA, NA, 0)
+)
+
+# Check if respondent is aware of ANY brand
+brand_data$any_awareness <- apply_row(brand_data[2:4], everything(), function(x) any_x(x, 1))
+
+print(brand_data)
+
+# Compare with regular any() function
+brand_data$any_regular <- apply_row(brand_data[2:4], everything(), function(x) any(x == 1, na.rm = TRUE))
+
+# Show the difference for all-NA cases
+comparison <- brand_data %>% 
+  filter(respondent %in% c(4, 5)) %>%
+  select(respondent, any_awareness, any_regular)
+print(comparison)
+```
+
+## Row-wise Operations with `apply_row()`
+
+Apply functions across rows of selected columns.
+
+```{r apply_row_examples}
+# Calculate row-wise statistics
+survey_stats <- survey_data %>%
+  select(brand_awareness_1, brand_awareness_2, brand_awareness_3) %>%
+  mutate(
+    total_awareness = apply_row(., everything(), sum, na.rm = TRUE),
+    max_awareness = apply_row(., everything(), max, na.rm = TRUE),
+    any_awareness = apply_row(., everything(), function(x) any_x(x, 1))
+  )
+
+head(survey_stats)
+
+# More complex example: satisfaction across multiple dimensions
+# Let's create some multi-dimensional satisfaction data
+satisfaction_dims <- tibble(
+  service_sat = sample(1:7, n, replace = TRUE),
+  product_sat = sample(1:7, n, replace = TRUE),
+  value_sat = sample(1:7, n, replace = TRUE)
+)
+
+satisfaction_summary <- satisfaction_dims %>%
+  mutate(
+    mean_satisfaction = apply_row(., everything(), mean, na.rm = TRUE),
+    top_box_count = apply_row(., everything(), function(x) sum(x >= 6, na.rm = TRUE)),
+    all_satisfied = apply_row(., everything(), function(x) all(x >= 5, na.rm = TRUE))
+  )
+
+head(satisfaction_summary)
+```
+
+# 5. Utility and Helper Functions
+
+## Lookup Tables with `look_up()`
+
+Map values using lookup tables - useful for recoding survey responses.
+
+```{r lookup_examples}
+# Create a lookup table for region codes
+region_lookup <- data.frame(
+  code = 1:5,
+  region = c("North", "South", "East", "West", "Central"),
+  stringsAsFactors = FALSE
+)
+
+# Generate some region codes
+region_codes <- sample(1:5, 20, replace = TRUE)
+
+# Map to region names
+region_names <- look_up(region_codes, region_lookup, index = "code", column = "region")
+
+# Show mapping
+mapping_example <- data.frame(
+  code = region_codes[1:10],
+  region = region_names[1:10]
+)
+print(mapping_example)
+```
+
+## Creating Named Lists with `create_named_list()`
+
+Create named lists for value labels and other uses.
+
+```{r named_lists}
+# Create a named list for survey responses
+response_options <- c("Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
+response_codes <- 1:5
+
+# Create named list
+response_list <- create_named_list(response_options, response_codes)
+print(response_list)
+```
+
+## Squish Function for Data Consistency
+
+The `squish()` function ensures data consistency by returning single values when all values in a group are identical.
+
+```{r squish_example}
+# Example: Demographics should be consistent within household
+household_data <- tibble(
+  household_id = c(1, 1, 1, 2, 2, 3, 3, 3),
+  person_id = 1:8,
+  household_income = c(75000, 75000, 75000, 50000, 50000, 100000, 100000, 100000),
+  zip_code = c("12345", "12345", "12345", "67890", "67890", "54321", "54321", "54321")
+)
+
+# Aggregate to household level
+household_summary <- household_data %>%
+  group_by(household_id) %>%
+  summarise(
+    income = squish(household_income),
+    zip = squish(zip_code),
+    household_size = n(),
+    .groups = 'drop'
+  )
+
+print(household_summary)
+```
+
+# 6. Practical Workflow Example
+
+Let's put it all together in a typical survey analysis workflow:
+
+```{r complete_workflow}
+# 1. Start with raw survey data
+survey_analysis <- survey_data %>%
+  
+  # 2. Add variable labels
+  mutate(
+    satisfaction = set_varl(satisfaction, "Q2. Overall Satisfaction (7-point scale)"),
+    nps_score = set_varl(nps_score, "Q3. Net Promoter Score"),
+    gender = set_varl(gender, "Q1. Gender")
+  ) %>%
+  
+  # 3. Add value labels
+  mutate(
+    gender = set_vall(gender, c("Male" = 1, "Female" = 2, "Other" = 3)),
+    satisfaction = set_vall(satisfaction, c(
+      "Extremely dissatisfied" = 1, "Very dissatisfied" = 2, 
+      "Somewhat dissatisfied" = 3, "Neutral" = 4,
+      "Somewhat satisfied" = 5, "Very satisfied" = 6, 
+      "Extremely satisfied" = 7
+    ))
+  ) %>%
+  
+  # 4. Create derived variables
+  mutate(
+    # Top-2-box satisfaction
+    satisfaction_t2b = box_it(satisfaction, "top", 2, var_label = "Satisfaction T2B"),
+    
+    # NPS categories  
+    nps_category = as_nps(nps_score),
+    
+    # Scaled age
+    age_scaled = maxmin(age),
+    
+    # Brand awareness summary
+    total_brand_awareness = apply_row(
+      select(., starts_with("brand_awareness")), 
+      everything(), 
+      sum, na.rm = TRUE
+    )
+  )
+
+# 5. Create summary analysis
+summary_results <- survey_analysis %>%
+  group_by(gender) %>%
+  summarise(
+    n = n(),
+    avg_age = round(mean(age, na.rm = TRUE), 1),
+    satisfaction_rate = as_percent(mean(satisfaction_t2b == 1, na.rm = TRUE), 1),
+    avg_nps = round(mean(nps_category, na.rm = TRUE), 1),
+    avg_brand_awareness = round(mean(total_brand_awareness, na.rm = TRUE), 1),
+    .groups = 'drop'
+  )
+
+print(summary_results)
+
+# 6. Create a data dictionary for the final dataset
+final_dict <- survey_analysis %>%
+  select(gender, satisfaction, satisfaction_t2b, nps_score, nps_category) %>%
+  data_dict()
+
+print(final_dict)
+```
+
+# 7. Advanced Examples
+
+## Working with Missing Data
+
+```{r missing_data}
+# Create data with missing values
+survey_missing <- survey_data %>%
+  mutate(
+    # Introduce some missing values
+    satisfaction = ifelse(runif(n()) < 0.1, NA, satisfaction),
+    nps_score = ifelse(runif(n()) < 0.15, NA, nps_score)
+  )
+
+# Use any_x to handle missing data appropriately
+brand_awareness_any <- survey_missing %>%
+  select(starts_with("brand_awareness")) %>%
+  mutate(
+    # This handles all-NA rows correctly
+    any_brand_aware = apply_row(., everything(), function(x) any_x(x, 1))
+  )
+
+# Check cases where all brand awareness questions are NA
+all_na_cases <- which(is.na(brand_awareness_any$any_brand_aware))
+cat("Cases with all-NA brand awareness:", length(all_na_cases), "\n")
+```
+
+## Scale Conversion Workflow
+
+```{r scale_conversion}
+# Convert multiple scales for comparison
+scale_comparison <- survey_data %>%
+  mutate(
+    # Original 7-point satisfaction
+    satisfaction_7pt = satisfaction,
+    
+    # Convert to 5-point scale
+    satisfaction_5pt = likert_convert(satisfaction, 7, 1, 5, 1),
+    
+    # Convert to 10-point scale  
+    satisfaction_10pt = likert_convert(satisfaction, 7, 1, 10, 1),
+    
+    # Create binary satisfied/not satisfied
+    satisfaction_binary = box_it(satisfaction, "top", 3, var_label = "Satisfied (Binary)")
+  ) %>%
+  select(respondent_id, starts_with("satisfaction")) %>%
+  slice(1:10)
+
+print(scale_comparison)
+```
+
+# Conclusion
+
+The `surveytoolbox` package provides a comprehensive set of tools for survey data analysis in R. Key benefits include:
+
+- **Standardized labeling**: Consistent variable and value labeling following survey research best practices
+- **Scale transformations**: Easy conversion between different scale types and ranges  
+- **Survey-specific metrics**: Built-in support for NPS, top-box analysis, and other common survey metrics
+- **Data cleaning**: Robust tools for cleaning and preparing survey data
+- **Missing data handling**: Functions that appropriately handle missing survey responses
+
+These functions work seamlessly with the tidyverse ecosystem and can be easily integrated into existing survey analysis workflows. The package is particularly valuable for analysts working with SPSS-style labeled data and those conducting regular survey research.
+
+For more information and updates, visit the [package repository](https://github.com/martinctc/surveytoolbox).
+
+---
+
+```{r session_info}
+sessionInfo()
+```

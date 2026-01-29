@@ -26,7 +26,14 @@ copy_df(
 
 \item{...}{Additional arguments for write.table().}
 }
+\value{
+Invisibly returns the input data frame \code{x}.
+}
 \description{
 This is a pipe-optimised function, and
 accompanies read_df() as a tool for ad-hoc analysis, which reads a data table copied from Excel into R.
+}
+\note{
+This function only works on Windows. On other platforms, it will
+issue a warning and return the input invisibly.
 }

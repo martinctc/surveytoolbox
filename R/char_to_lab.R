@@ -1,6 +1,10 @@
+#' @title
 #' Convert character variable to labelled integer variable
 #' 
-#' This function converts the character values into value labels, assigning each value an integer.
+#' @description
+#' This function converts the character values into value labels, assigning each
+#' value an integer. To achieve the same effect whilst prescribing a set of
+#' value-to-label mapping to the function, please see `char_to_var()`.
 #' 
 #' @param x Character vector to pass through
 #' 
@@ -8,10 +12,13 @@
 #' 
 #' @export
 char_to_lab <- function(x){
+  
   unique_x <- unique(x)
   
-  gen_df <- tibble::tibble(id=1:length(unique_x),
-                           var=as.character(unique_x))
+  gen_df <- tibble::tibble(
+    id = 1:length(unique_x),
+    var = as.character(unique_x)
+    )
   
   value_labels <- unlist(create_named_list(gen_df$var,gen_df$id))
   

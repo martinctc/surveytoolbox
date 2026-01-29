@@ -1,4 +1,6 @@
-#' Convert ordinal variables into binary variables by "boxing"
+#' @title
+#' Convert ordinal variables into binary variables by creating top or bottom n
+#' 'box' categories
 #' 
 #' @description
 #' For instance, you can create a Top Two Box variable from a 7-point agreement
@@ -25,7 +27,10 @@
 #' @return a binary variable of labelled double type.
 #' 
 #' @examples
-#' box_it(sample(1:10,100,replace = TRUE)) # Converted to binary variable where 9, 10 are selected
+#' # Converted to binary variable where 9, 10 are selected
+#' box_it(sample(1:10,100,replace = TRUE)) 
+#' 
+#' # Example with missing values
 #' box_it(sample(c(1:10, NA),100,replace = TRUE))
 #' 
 #' # Example where specified numeric values are replaced with NAs

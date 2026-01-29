@@ -1,18 +1,26 @@
 Package: surveytoolbox
 Type: Package
 Title: Useful Support Functions for Survey Analysis
-Version: 0.1.0.9000
-Author: Martin Chan
-Maintainer: Martin Chan <martinchan53@gmail.com>
-URL: https://github.com/martinctc/surveytoolbox
-Description: A R package containing useful support functions for survey analysis.
+Version: 0.1.0
+Authors@R: 
+    person("Martin", "Chan", , "martinchan53@gmail.com", role = c("aut", "cre"))
+URL: https://github.com/martinctc/surveytoolbox/
+BugReports: https://github.com/martinctc/surveytoolbox/issues
+Description: A collection of tools for analysing and visualising survey data 
+    in R. This package provides functions for manipulating variable and value 
+    labels commonly found in SPSS datasets, creating data dictionaries, 
+    converting variable types between labelled and standard R types, performing 
+    rowwise operations with 'dplyr' syntax, creating dummy variables from 
+    categorical data, and computing common survey metrics such as Net Promoter 
+    Score (NPS) and top-box/bottom-box transformations. It integrates seamlessly 
+    with the 'tidyverse' workflow and the 'haven' package for labelled data.
 License: GPL-3
 Encoding: UTF-8
+Language: en-GB
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Imports: 
-    base,
     dplyr,
     stringr,
     stats,
@@ -21,11 +29,19 @@ Imports:
     readr,
     haven,
     tidyr,
-    psych,
     magrittr,
     purrr,
     glue,
-    data.table
+    data.table,
+    broom,
+    rstatix,
+    graphics,
+    rlang
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    ggplot2,
+    psych
 Config/testthat/edition: 3
+VignetteBuilder: knitr

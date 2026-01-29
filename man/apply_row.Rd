@@ -2,22 +2,27 @@
 % Please edit documentation in R/apply_row.R
 \name{apply_row}
 \alias{apply_row}
-\title{Apply a function rowwise, selecting variables with dplyr::select() syntax}
+\title{Apply a function rowwise, selecting variables with \code{dplyr::select()}
+syntax}
 \usage{
 apply_row(x, select_helpers = everything(), FUN, ...)
 }
 \arguments{
 \item{x}{Data frame or tibble to pass through.}
 
-\item{select_helpers}{Select variables using dplyr::select() syntax}
+\item{select_helpers}{Select variables using \code{dplyr::select()} syntax}
 
 \item{FUN}{Function to be applied to selected columns}
 
 \item{...}{Additional arguments to the function.}
 }
+\value{
+transformed version of the vector \code{x}
+}
 \description{
 \code{apply_row()} is a wrapper around \code{apply()} and \code{select()},
-applying a function rowwise, and selecting variables with dplyr::select() syntax.
+applying a function rowwise, and selecting variables with \verb{dplyr::select(})
+syntax.
 This makes code slightly less verbose for rowwise operations.
 }
 \examples{
@@ -30,6 +35,5 @@ Can use a character vector to select columns
 petal_str <- c("Petal.Length", "Petal.Width")
 iris \%>\% mutate(Any_Petal = apply_row(., petal_str, function(x) any(x > 1)))
 }
-
 
 }

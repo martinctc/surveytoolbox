@@ -11,6 +11,9 @@ timed_fn(main, extension)
 
 \item{extension}{The file extension to be used, e.g. ".csv"}
 }
+\value{
+A character string with the file name, timestamp, and extension combined.
+}
 \description{
 This function generates a character string that suffixes a file name with a time stamp.
 }

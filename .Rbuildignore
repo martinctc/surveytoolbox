@@ -4,3 +4,9 @@
 ^icons$
 ^_development$
 ^\.github$
+^_pkgdown.yml$
+^doc$
+^Meta$
+^cran-comments\.md$
+^LICENSE\.md$
+^CRAN-SUBMISSION$

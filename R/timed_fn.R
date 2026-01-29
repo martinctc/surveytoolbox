@@ -3,6 +3,9 @@
 #' This function generates a character string that suffixes a file name with a time stamp.
 #' @param main The main file name to be used. 
 #' @param extension The file extension to be used, e.g. ".csv"
+#' 
+#' @return A character string with the file name, timestamp, and extension combined.
+#' 
 #' @import stringr
 #' @examples
 #' timed_fn("Q15. ",".xlsx")
