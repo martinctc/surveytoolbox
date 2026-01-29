@@ -1,7 +1,5 @@
 # surveytoolbox 0.1.0
 
-## New Features
-
 * Initial CRAN release
 * Core functions for survey data manipulation:
   - `superspread()`, `superspread_count()`, `superspread_fill()` for creating dummy variables
@@ -16,8 +14,3 @@
   - Utility functions: `clean_strings()`, `wrap_text()`, `timed_fn()`, `categorise()`
   - File operations: `sav_to_rds()`, `copy_df()`, `read_df()`
   - Scale transformations: `likert_convert()`, `likert_reverse()`, `maxmin()`
-
-## Documentation
-
-* Added vignettes: "Getting Started" and "surveytoolbox Walkthrough"
-* Full roxygen2 documentation for all exported functions
