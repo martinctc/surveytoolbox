@@ -6,7 +6,7 @@ Authors@R:
     person("Martin", "Chan", , "martinchan53@gmail.com", role = c("aut", "cre"))
 URL: https://github.com/martinctc/surveytoolbox/
 BugReports: https://github.com/martinctc/surveytoolbox/issues
-Description: A collection of tools for analyzing and visualizing survey data 
+Description: A collection of tools for analysing and visualising survey data 
     in R. This package provides functions for manipulating variable and value 
     labels commonly found in SPSS datasets, creating data dictionaries, 
     converting variable types between labelled and standard R types, performing 
@@ -16,6 +16,7 @@ Description: A collection of tools for analyzing and visualizing survey data
     with the 'tidyverse' workflow and the 'haven' package for labelled data.
 License: GPL-3
 Encoding: UTF-8
+Language: en-GB
 LazyData: true
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
