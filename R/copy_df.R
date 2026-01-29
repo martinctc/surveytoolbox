@@ -20,7 +20,7 @@ copy_df <- function(x, row.names = FALSE,
                     col.names = TRUE,
                     expand = "", quietly = FALSE, ...) {
   
- if (.Platform$OS.type != "windows") {
+  if (.Platform$OS.type != "windows") {
     warning("copy_df() only works on Windows.", call. = FALSE)
     return(invisible(x))
   }
