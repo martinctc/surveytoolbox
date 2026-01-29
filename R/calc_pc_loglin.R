@@ -9,13 +9,9 @@
 #' 
 #' @param x A log-linear model object.
 #' 
-#' @return A tibble with three columns: `var`, `coef`, and `pc_impact`.
+#' @return A [tibble][tibble::tibble-package] with three columns: `var`, `coef`, and `pc_impact`.
 #' 
-#' @import dplyr
-#' 
-#' @param x Log-linear model to be passed through
-#' 
-#' @return a [tibble][tibble::tibble-package]    
+#' @import dplyr    
 #' 
 #' @export
 calc_pc_loglin <- function(x){

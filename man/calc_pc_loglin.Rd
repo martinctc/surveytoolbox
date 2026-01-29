@@ -7,12 +7,10 @@
 calc_pc_loglin(x)
 }
 \arguments{
-\item{x}{Log-linear model to be passed through}
+\item{x}{A log-linear model object.}
 }
 \value{
-A tibble with three columns: \code{var}, \code{coef}, and \code{pc_impact}.
-
-a \link[tibble:tibble-package]{tibble}
+A \link[tibble:tibble-package]{tibble} with three columns: \code{var}, \code{coef}, and \code{pc_impact}.
 }
 \description{
 This function exponentiates coefficients and takes out 1 to calculate the
