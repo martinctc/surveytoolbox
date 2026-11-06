@@ -1,11 +1,17 @@
+#' @title 
 #' Calculate percentage impact from coefficients of a log-linear model
 #' 
-#' Exponentiates coefficients and takes out 1 to calculate percentage impact.
-#' Returns a tibble
+#' @description
+#' This function exponentiates coefficients and takes out 1 to calculate the
+#' percentage impact of each variable on the response variable in a log-linear
+#' model. The function returns a tibble with three columns: `var`, `coef`, and
+#' `pc_impact`.
 #' 
-#' @import dplyr
+#' @param x A log-linear model object.
 #' 
-#' @param x Log-linear model to be passed through
+#' @return A [tibble][tibble::tibble-package] with three columns: `var`, `coef`, and `pc_impact`.
+#' 
+#' @import dplyr    
 #' 
 #' @export
 calc_pc_loglin <- function(x){

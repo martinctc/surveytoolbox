@@ -7,9 +7,14 @@
 calc_pc_loglin(x)
 }
 \arguments{
-\item{x}{Log-linear model to be passed through}
+\item{x}{A log-linear model object.}
+}
+\value{
+A \link[tibble:tibble-package]{tibble} with three columns: \code{var}, \code{coef}, and \code{pc_impact}.
 }
 \description{
-Exponentiates coefficients and takes out 1 to calculate percentage impact.
-Returns a tibble
+This function exponentiates coefficients and takes out 1 to calculate the
+percentage impact of each variable on the response variable in a log-linear
+model. The function returns a tibble with three columns: \code{var}, \code{coef}, and
+\code{pc_impact}.
 }

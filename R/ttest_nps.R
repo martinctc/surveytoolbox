@@ -32,5 +32,5 @@ ttest_nps <- function(x, conf_level = 0.95){
     message()
   message("Returning margin of error:")
   
-  return(ci_range)
+  return(as.numeric(ci_range))
 }

@@ -9,16 +9,18 @@
 #' @family Variable labels
 #' @family Labels
 #' 
+#' @return The input variable `x` with the variable label attribute set.
+#' 
 #' @examples 
 #' library(tibble)
 #' library(dplyr)
 #' library(magrittr)
 #' df <-
-#' tibble(RESPID=1:1000,
-#'        Q1=sample(c(0,1,2),1000,replace=TRUE),
-#'        Q2=sample(c(0,1),1000,replace=TRUE))
+#' tibble(RESPID = 1:1000,
+#'        Q1 = sample(c(0, 1, 2), 1000, replace = TRUE),
+#'        Q2 = sample(c(0, 1), 1000, replace = TRUE))
 #' df %>%
-#'   mutate_at("Q1",funs(set_varl(.,"Which of the following groups do you fall into?"))) %>%
+#'   mutate(Q1 = set_varl(Q1, "Which of the following groups do you fall into?")) %>%
 #'   .$Q1
 #' @export
 set_varl <- function(x, variable_label){

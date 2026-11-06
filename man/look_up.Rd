@@ -16,6 +16,10 @@ look_up(x, table, index = "var", column = 2)
 \item{column}{Column index (integer) or name (string) to return from the lookup table.
 Default is the second column.}
 }
+\value{
+A character vector with matched values from the lookup table, or the original
+values if no match is found.
+}
 \description{
 Replace x values with corresponding values using a key
 }

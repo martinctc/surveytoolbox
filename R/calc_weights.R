@@ -2,7 +2,7 @@
 #' 
 #' @param data Data frame or tibble containing the variable used for computing weights
 #' @param weight_var The variable to be used for computing the weight 
-#' @param target A named vector containing the target weights. Names must mtach labels for `weight_var`
+#' @param target A named vector containing the target weights. Names must match labels for `weight_var`
 #' @param weight_label A character vector to specify the variable name of the weight variable. Defaults to 'weight'.
 #' 
 #' @export
@@ -19,7 +19,7 @@ calc_weights <- function(data, weight_var, target, weight_label = "weight"){
     count_tb %>%
       left_join(weight_target, by = weight_var) %>%
       mutate(!!sym(weight_label) := value / prop) %>%
-      select(weight_var, weight_label) -> weight_results
+      select(dplyr::all_of(c(weight_var, weight_label))) -> weight_results
     
     data %>%
       left_join(weight_results, by = weight_var)

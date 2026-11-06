@@ -7,7 +7,7 @@
 #' labels (`var_label`) provided by the user.
 #' 
 #' @details
-#' This function is a wrapper around several other {surveytoolbox} functions:
+#' This function is a wrapper around several other surveytoolbox functions:
 #'   - `create_named_list()`
 #'   - `set_vall()`
 #'   - `set_varl()`

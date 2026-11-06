@@ -6,6 +6,10 @@
 #' @param select_helpers Uses dplyr-style select functions to select multiple variables. 
 #' Use everything() to select all variables. These variables must all be character type.
 #' @family superspread functions
+#' 
+#' @return A tibble with the original columns plus new dummy variable columns for each
+#'   unique value found in the selected categorical variables.
+#'   
 #' @import dplyr
 #' @importFrom magrittr %>%
 #' @importFrom data.table :=
@@ -26,7 +30,7 @@
 #' @export
 superspread <- function (df, select_helpers) {
   dt <- data.table::data.table(df)
-  input_vars_tb <- dplyr::select(df, select_helpers)
+  input_vars_tb <- select_cols(df, rlang::enquo(select_helpers))
   new_dummy_labs <- unique(as.vector(as.matrix(input_vars_tb)))
   pairwise_any <- function(var1, var2) {
     if (length(var1) != length(var2)) {

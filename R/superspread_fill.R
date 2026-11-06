@@ -15,8 +15,8 @@
 #' @export
 superspread_fill <- function(df,tcol,select_helpers=everything(),target_col){
   df_original <- df
-  df <- dplyr::select(df,select_helpers)
-  dft <- dplyr::select(df_original,target_col)
+  df <- select_cols(df, rlang::enquo(select_helpers))
+  dft <- dplyr::select(df_original, dplyr::all_of(target_col))
   
   frameNA <-matrix(NA,nrow(df),tcol) %>% as.data.frame()
   names(frameNA) <-seq(1,tcol)

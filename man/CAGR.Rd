@@ -13,9 +13,9 @@ CAGR(value_begin, value_end, n_periods)
 
 \item{n_periods}{The number of periods to base the CAGR calculations on.}
 }
-\description{
-Calculates the Compound Annual Growth Rate (CAGR).
+\value{
+numeric value
 }
-\seealso{
-http://www.investopedia.com/terms/c/cagr.asp
+\description{
+Compute the Compound Annual Growth Rate (CAGR).
 }

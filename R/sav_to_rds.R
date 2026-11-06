@@ -7,7 +7,11 @@
 #' 
 #' @param import String containing path to .SAV file
 #' @param export String containing desired file name for RDS export. 
-#' Default is to use same name as .SAV file     
+#' Default is to use same name as .SAV file
+#' 
+#' @return NULL, invisibly. The function is called for its side effect of
+#'   creating an RDS file.
+#'   
 #' @import haven   
 #' @export
 sav_to_rds<-function(import,export=""){

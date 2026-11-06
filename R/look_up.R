@@ -5,6 +5,10 @@
 #' @param index Character string of the key/index column used for matching
 #' @param column Column index (integer) or name (string) to return from the lookup table. 
 #' Default is the second column.
+#' 
+#' @return A character vector with matched values from the lookup table, or the original
+#'   values if no match is found.
+#'   
 #' @examples
 #' library(magrittr)
 #' library(dplyr)

@@ -36,7 +36,7 @@ variable, using value label mappings (\code{lab_str}, \code{lab_num}) and variab
 labels (\code{var_label}) provided by the user.
 }
 \details{
-This function is a wrapper around several other {surveytoolbox} functions:
+This function is a wrapper around several other surveytoolbox functions:
 \itemize{
 \item \code{create_named_list()}
 \item \code{set_vall()}

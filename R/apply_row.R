@@ -1,12 +1,14 @@
-#' @title Apply a function rowwise, selecting variables with dplyr::select() syntax
+#' @title Apply a function rowwise, selecting variables with `dplyr::select()`
+#'   syntax
 #'
 #' @description
 #' `apply_row()` is a wrapper around `apply()` and `select()`,
-#' applying a function rowwise, and selecting variables with dplyr::select() syntax.
+#' applying a function rowwise, and selecting variables with `dplyr::select()`
+#' syntax.
 #' This makes code slightly less verbose for rowwise operations.
 #'
 #' @param x Data frame or tibble to pass through.
-#' @param select_helpers Select variables using dplyr::select() syntax
+#' @param select_helpers Select variables using `dplyr::select()` syntax
 #' @param FUN Function to be applied to selected columns
 #' @param ... Additional arguments to the function.
 #' 
@@ -21,10 +23,14 @@
 #' iris %>% mutate(Any_Petal = apply_row(., petal_str, function(x) any(x > 1)))
 #' }
 #' 
+#' @return 
+#' A vector or matrix containing the result of applying `FUN` to each row of
+#' the selected columns.
 #' 
 #' @export
 
 apply_row <- function(x, select_helpers = everything(), FUN, ...){
-  apply(select(x, select_helpers), 1, FUN, ...)
+  selected <- select_cols(x, rlang::enquo(select_helpers))
+  apply(selected, 1, FUN, ...)
 }
 

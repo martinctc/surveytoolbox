@@ -23,5 +23,6 @@ data.frame(original = rand, transformed = maxmin(rand))
 iris \%>\% mutate(Petal.Length2 = maxmin(Petal.Length))
 
 maxmin(iris$Petal.Length)
+
 }
 \keyword{max-min}

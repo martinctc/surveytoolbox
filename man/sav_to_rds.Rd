@@ -12,6 +12,10 @@ sav_to_rds(import, export = "")
 \item{export}{String containing desired file name for RDS export.
 Default is to use same name as .SAV file}
 }
+\value{
+NULL, invisibly. The function is called for its side effect of
+creating an RDS file.
+}
 \description{
 This function is useful for converting large, bulky SAV files into RDS files which are
 faster to load and take up less memory. Use readRDS() for loading in the exported file.
