@@ -8,6 +8,8 @@
 #' @param metric string specifying the name of the metric for which the
 #'   frequency distribution is to be created
 #' 
+#' @return A data frame with columns `metric`, `bin_range`, and `counts`.
+#'
 #' @examples
 #' create_freq_dist(iris, "Sepal.Length")
 #' 

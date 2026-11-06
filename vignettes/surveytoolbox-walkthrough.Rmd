@@ -40,7 +40,7 @@ set.seed(123)
 
 The `surveytoolbox` package provides a comprehensive set of functions designed specifically for survey data analysis in R. This vignette demonstrates the key functions organized by their main use cases:
 
-1. **Data Labeling and Management**
+1. **Data Labelling and Management**
 2. **Scale and Variable Transformations** 
 3. **Survey-Specific Calculations**
 4. **Data Cleaning and Preparation**
@@ -73,7 +73,7 @@ survey_data <- tibble(
 head(survey_data)
 ```
 
-# 1. Data Labeling and Management
+# 1. Data Labelling and Management
 
 ## Setting Variable Labels with `set_varl()`
 
@@ -81,7 +81,7 @@ Variable labels provide descriptive names for your variables, essential for surv
 
 ```{r variable_labels}
 # Add variable labels to our survey data
-survey_labeled <- survey_data %>%
+survey_labelled <- survey_data %>%
   mutate(
     respondent_id = set_varl(respondent_id, "Unique Respondent Identifier"),
     age = set_varl(age, "Respondent Age in Years"),
@@ -94,8 +94,8 @@ survey_labeled <- survey_data %>%
   )
 
 # Check variable labels
-attr(survey_labeled$satisfaction, "label")
-attr(survey_labeled$nps_score, "label")
+attr(survey_labelled$satisfaction, "label")
+attr(survey_labelled$nps_score, "label")
 ```
 
 ## Setting Value Labels with `set_vall()`
@@ -104,7 +104,7 @@ Value labels map numeric codes to meaningful text descriptions.
 
 ```{r value_labels}
 # Add value labels
-survey_labeled <- survey_labeled %>%
+survey_labelled <- survey_labelled %>%
   mutate(
     gender = set_vall(gender, c("Male" = 1, "Female" = 2, "Other/Prefer not to say" = 3)),
     satisfaction = set_vall(satisfaction, c(
@@ -134,7 +134,7 @@ survey_labeled <- survey_labeled %>%
   )
 
 # Check the labelled structure
-str(survey_labeled$gender)
+str(survey_labelled$gender)
 ```
 
 ## Creating Variable Label Tables with `varl_tb()`
@@ -143,7 +143,7 @@ This function creates a tidy data frame showing all variable labels in your data
 
 ```{r variable_table}
 # Create a variable label table
-var_labels <- varl_tb(survey_labeled)
+var_labels <- varl_tb(survey_labelled)
 print(var_labels)
 ```
 
@@ -153,7 +153,7 @@ Generate comprehensive data dictionaries showing variable information, labels, a
 
 ```{r data_dictionary}
 # Create a data dictionary for key survey variables
-survey_labeled %>%
+survey_labelled %>%
   select(gender, satisfaction, income, usage_freq, recommend) %>%
   data_dict()
 ```
@@ -259,7 +259,7 @@ overall_nps <- mean(nps_categorized, na.rm = TRUE)
 cat("Overall NPS:", round(overall_nps, 1), "\n")
 
 # NPS by gender
-nps_by_gender <- survey_labeled %>%
+nps_by_gender <- survey_labelled %>%
   mutate(nps_cat = as_nps(nps_score)) %>%
   group_by(gender) %>%
   summarise(
@@ -311,7 +311,7 @@ Convert numeric values to formatted percentage strings.
 
 ```{r as_percent}
 # Calculate satisfaction rates
-satisfaction_rates <- survey_labeled %>%
+satisfaction_rates <- survey_labelled %>%
   group_by(gender) %>%
   summarise(
     satisfied_rate = mean(satisfaction >= 5, na.rm = TRUE),
@@ -624,13 +624,13 @@ print(scale_comparison)
 
 The `surveytoolbox` package provides a comprehensive set of tools for survey data analysis in R. Key benefits include:
 
-- **Standardized labeling**: Consistent variable and value labeling following survey research best practices
+- **Standardised labelling**: Consistent variable and value labelling following survey research best practices
 - **Scale transformations**: Easy conversion between different scale types and ranges  
 - **Survey-specific metrics**: Built-in support for NPS, top-box analysis, and other common survey metrics
 - **Data cleaning**: Robust tools for cleaning and preparing survey data
 - **Missing data handling**: Functions that appropriately handle missing survey responses
 
-These functions work seamlessly with the tidyverse ecosystem and can be easily integrated into existing survey analysis workflows. The package is particularly valuable for analysts working with SPSS-style labeled data and those conducting regular survey research.
+These functions work seamlessly with the tidyverse ecosystem and can be easily integrated into existing survey analysis workflows. The package is particularly valuable for analysts working with SPSS-style labelled data and those conducting regular survey research.
 
 For more information and updates, visit the [package repository](https://github.com/martinctc/surveytoolbox).
 

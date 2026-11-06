@@ -65,6 +65,11 @@ test_that("char_to_lab handles NA values", {
   expect_true(is.na(result[2]))
   expect_false(is.na(result[1]))
   expect_false(is.na(result[3]))
+
+  # Missing values should not receive a value label
+  labels <- attr(result, "labels")
+  expect_false(anyNA(names(labels)))
+  expect_equal(length(labels), 2)
 })
 
 test_that("char_to_lab creates unique codes for unique values", {

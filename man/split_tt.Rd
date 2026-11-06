@@ -22,5 +22,4 @@ x.test <- split_tt(x,.7)$test
 dim(x.train)
 dim(x.test)
 }
-\keyword{test}
-\keyword{train,}
+\keyword{train}

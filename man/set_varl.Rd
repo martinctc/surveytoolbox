@@ -30,8 +30,8 @@ df \%>\%
   .$Q1
 }
 \seealso{
-Other Labels: 
-\code{\link{set_vall}()}
+Other Labels:
+\code{\link[=set_vall]{set_vall()}}
 }
 \concept{Labels}
 \concept{Variable labels}

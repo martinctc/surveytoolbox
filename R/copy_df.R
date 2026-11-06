@@ -8,7 +8,7 @@
 #'
 #' @param x Data frame to be passed through. Cannot contain list-columns or nested data frames.
 #' @param row.names A logical vector for specifying whether to allow row names. Defaults to FALSE.
-#' @param col.names A logical vector for specifying whether to allow column names. Defaults to FALSE.
+#' @param col.names A logical vector for specifying whether to allow column names. Defaults to TRUE.
 #' @param expand Add number to manually expand clipboard size
 #' @param quietly Set this to TRUE to not print data frame on console
 #' @param ... Additional arguments for write.table().

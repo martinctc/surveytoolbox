@@ -17,11 +17,12 @@ apply_row(x, select_helpers = everything(), FUN, ...)
 \item{...}{Additional arguments to the function.}
 }
 \value{
-transformed version of the vector \code{x}
+A vector or matrix containing the result of applying \code{FUN} to each row of
+the selected columns.
 }
 \description{
 \code{apply_row()} is a wrapper around \code{apply()} and \code{select()},
-applying a function rowwise, and selecting variables with \verb{dplyr::select(})
+applying a function rowwise, and selecting variables with \code{dplyr::select()}
 syntax.
 This makes code slightly less verbose for rowwise operations.
 }

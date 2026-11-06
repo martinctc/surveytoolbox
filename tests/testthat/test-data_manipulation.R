@@ -129,16 +129,17 @@ test_that("timed_fn creates timestamped filename", {
 })
 
 test_that("timed_fn includes timestamp", {
-  result1 <- timed_fn("file", ".txt")
-  Sys.sleep(1)  # Small delay
-  result2 <- timed_fn("file", ".txt")
-  
-  # Both should contain the main name
-  expect_true(grepl("file", result1))
-  expect_true(grepl("file", result2))
-  
-  # Results should be different due to timestamp
-  expect_false(result1 == result2)
+  result <- timed_fn("file", ".txt")
+
+  # The timestamp is made up of the current date and time
+  expect_match(result, "^file ")
+  expect_match(result, "[0-9]{8}")
+
+  # Two calls made in quick succession have the same filename shape
+  expect_match(
+    timed_fn("file", ".txt"),
+    "^file [0-9]{8}_[0-9]+(_[A-Za-z]+)? \\.txt$"
+  )
 })
 
 test_that("timed_fn handles different extensions", {

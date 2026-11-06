@@ -5,8 +5,6 @@
 #' @param value_end The value at the end of the series.
 #' @param n_periods The number of periods to base the CAGR calculations on.
 #' 
-#' @seealso http://www.investopedia.com/terms/c/cagr.asp
-#' 
 #' @return numeric value
 #' 
 #' @export

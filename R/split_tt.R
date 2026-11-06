@@ -2,7 +2,7 @@
 #'
 #'@param x Pass your data frame or matrix here.
 #'@param part A numeric value between 0 and 1 to represent the proportion of the whole data you want to use as the training set.
-#'@keywords train, test
+#'@keywords train
 #'@examples
 #'x <-as.data.frame(matrix(1:5000,250,20))
 #'x.train <- split_tt(x,.7)$train

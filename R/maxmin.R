@@ -6,7 +6,6 @@
 #' 
 #' @param x Pass a vector or the required columns of a data frame through this argument.
 #' @keywords max-min
-#' @export
 #' @examples
 #' library(magrittr)
 #' library(dplyr)

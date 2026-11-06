@@ -14,15 +14,10 @@ test_that("create_named_list handles single elements", {
   expect_equal(result, expected)
 })
 
-test_that("create_named_list works with different data types", {
-  # Character values - skip this test as the function has issues with character values
-  # This is a known limitation of the function
-  skip("Function has issues with character values in current implementation")
-  
-  # Numeric names (will be converted to character)
-  result2 <- create_named_list(c(1, 2), c("one", "two"))
-  expected2 <- c("1" = "one", "2" = "two")
-  expect_equal(result2, expected2)
+test_that("create_named_list works with numeric names", {
+  result <- create_named_list(c(1, 2), c(10, 20))
+  expected <- c("1" = 10, "2" = 20)
+  expect_equal(result, expected)
 })
 
 test_that("create_named_list handles special characters in names", {

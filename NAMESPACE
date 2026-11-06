@@ -51,21 +51,32 @@ import(haven)
 import(stringr)
 importFrom(broom,tidy)
 importFrom(data.table,":=")
-importFrom(dplyr,filter)
-importFrom(dplyr,mutate)
-importFrom(dplyr,select)
+importFrom(dplyr,
+  filter,
+  mutate,
+  select
+)
 importFrom(glue,glue)
 importFrom(graphics,hist)
 importFrom(magrittr,"%>%")
-importFrom(purrr,is_null)
-importFrom(purrr,map)
-importFrom(rlang,.data)
-importFrom(rlang,sym)
+importFrom(purrr,
+  is_null,
+  map
+)
+importFrom(rlang,
+  .data,
+  sym
+)
 importFrom(rstatix,chisq_test)
-importFrom(stats,chisq.test)
-importFrom(stats,fisher.test)
-importFrom(tibble,enframe)
-importFrom(tibble,tibble)
-importFrom(tidyr,drop_na)
-importFrom(tidyr,pivot_longer)
-importFrom(tidyr,unnest)
+importFrom(stats,
+  chisq.test,
+  fisher.test
+)
+importFrom(tibble,
+  enframe,
+  tibble
+)
+importFrom(tidyr,
+  drop_na,
+  unnest
+)

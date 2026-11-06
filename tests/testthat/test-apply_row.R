@@ -23,6 +23,10 @@ test_that("apply_row works with column selection", {
   result <- apply_row(df, c("a", "b"), sum)
   expected <- c(5, 7, 9)  # 1+4, 2+5, 3+6
   expect_equal(result, expected)
+
+  # Test with a tidyselect helper
+  result_helper <- apply_row(df, starts_with("a"), sum)
+  expect_equal(result_helper, df$a)
 })
 
 test_that("apply_row handles NA values correctly", {

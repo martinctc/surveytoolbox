@@ -25,7 +25,7 @@
 #' @export
 superspread_count <- function(df, select_helpers = everything()){
   dt <- data.table::data.table(df)
-  input_vars_tb <- dplyr::select(df, select_helpers)
+  input_vars_tb <- select_cols(df, rlang::enquo(select_helpers))
   new_dummy_labs <- unique(as.vector(as.matrix(input_vars_tb)))
   
   dt %>%

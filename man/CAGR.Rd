@@ -19,6 +19,3 @@ numeric value
 \description{
 Compute the Compound Annual Growth Rate (CAGR).
 }
-\seealso{
-http://www.investopedia.com/terms/c/cagr.asp
-}

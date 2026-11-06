@@ -12,6 +12,9 @@ create_freq_dist(data, metric)
 \item{metric}{string specifying the name of the metric for which the
 frequency distribution is to be created}
 }
+\value{
+A data frame with columns \code{metric}, \code{bin_range}, and \code{counts}.
+}
 \description{
 This function creates a frequency distribution table for a given
 metric. The table contains the bin ranges and the counts of the data points

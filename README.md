@@ -13,7 +13,7 @@ R package containing tidy support functions for survey analysis.
 
 It is from my own experience of analysing survey data in R that whilst more often than not you're able to do what you want to do, there is a sense that the 'essential functions' are scattered across different packages and Stack Overflow answers. This is understandable, as the workflow of every analyst is bound to be unique, and it  isn't necessarily sensible to have 100-odd functions collected in a single package for each user - there is bound to be a need to draw functions from multiple packages.  
 
-This is a curated collection of functions that I've either written or come across over the past years. In my analysis workflow, I often use these functions in conjunction with `tidyverse`, `srvyr` (allows you to work with weighted data), and `janitor`. There are also some miscellaneous functions which work with common survey analysis techniques such as factor analysis (using the `factanal()` function from `stats)
+This is a curated collection of functions that I've either written or come across over the past years. In my analysis workflow, I often use these functions in conjunction with `tidyverse`, `srvyr` (allows you to work with weighted data), and `janitor`. There are also some miscellaneous functions which work with common survey analysis techniques such as factor analysis (using the `factanal()` function from `stats`).
 
 **The aim of this package is to attempt to organise things a bit and add value by curation.**
 
@@ -34,13 +34,19 @@ There are broadly several groups of functions that you can find in this package:
 - Converting one or more categorical variable(s) into other variable types, such as dummy variables (binary), count variables (numeric), or "fill" variables (fills values from a required column if condition is TRUE)
 - Functions for recoding variable and value labels (e.g. `recode_vallab()`, `set_varl()`, `set_vall()`)
 
-There is also a convenience function (`apply_row()`) for performing rowwise operations, which is particularly useful when creating new variables based on a selection of columns on the datas. 
+There is also a convenience function (`apply_row()`) for performing rowwise operations, which is particularly useful when creating new variables based on a selection of columns in the data.
 
 ---
 
 ### Installation
 
-You can install surveytoolbox from GitHub with:
+Install the released version from CRAN:
+
+```R
+install.packages("surveytoolbox")
+```
+
+Or install the latest development version from GitHub:
 
 ```R
 install.packages("devtools")
@@ -64,11 +70,11 @@ iris %>%
 
 ### News and Updates
 
-This package is currently still under development, so it does come with a health advice: if you do wish to use them - have a check and run through the examples before assimilating them into your analysis. 
+This package is actively maintained. As with any analysis code, please check the examples and test the functions against your own data before relying on them in production.
 
-Note: Previously named 'surveytools', but now renamed to 'surveytoolbox' avoid confusion with another similar package of the same name (8th March 2019).
+Note: Previously named 'surveytools', but now renamed to 'surveytoolbox' to avoid confusion with another similar package of the same name (8 March 2019).
 
-12th Jan 2020 - Functions relating to modelling have now been moved to a new package [modeltoolbox](https://www.github.com/martinctc/modeltoolbox).
+12 January 2020 - Functions relating to modelling have now been moved to a new package [modeltoolbox](https://github.com/martinctc/modeltoolbox).
 
 
 ---

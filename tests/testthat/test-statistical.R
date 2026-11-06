@@ -16,6 +16,16 @@ test_that("test_chisq handles NA filtering", {
   
   expect_true(tibble::is_tibble(result))
   expect_true(!is.na(result$p))
+  expect_equal(result$n, nrow(df) - 3)
+})
+
+test_that("test_chisq removes missing values by default", {
+  df <- mtcars
+  df$cyl[1:3] <- NA
+
+  result <- test_chisq(df, "cyl", "vs")
+
+  expect_equal(result$n, nrow(df) - 3)
 })
 
 test_that("test_chisq returns significant result for related variables", {

@@ -24,7 +24,7 @@ A tibble containing the results of the chi-square or Fisher's exact test.
 This function computes a chi-square or Fisher's exact test for two categorical variables in a data frame.
 }
 \details{
-If the cell counts are lower than 5, the function will use Fisher's exact test. Otherwise, it will use a chi-square test.
+If the expected cell counts are lower than 5, the function will use Fisher's exact test. Otherwise, it will use a chi-square test.
 }
 \examples{
 data("mtcars")

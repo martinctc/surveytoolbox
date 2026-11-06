@@ -33,6 +33,19 @@ test_that("superspread handles multiple categorical columns", {
   expect_true(all(c("a", "b", "x", "y") %in% names(result)))
 })
 
+test_that("superspread supports tidyselect helpers", {
+  df <- data.frame(
+    id = 1:4,
+    cat1 = c("a", "b", "a", "b"),
+    cat2 = c("x", "x", "y", "y"),
+    stringsAsFactors = FALSE
+  )
+
+  result <- superspread(df, starts_with("cat"))
+
+  expect_true(all(c("a", "b", "x", "y") %in% names(result)))
+})
+
 test_that("superspread works with iris Species", {
   result <- superspread(iris, "Species")
   

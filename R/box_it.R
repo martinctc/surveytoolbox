@@ -65,25 +65,23 @@ box_it <-
   }
   
   if(is.null(na_val)){
-    
+
     output <-
       dplyr::case_when(is.na(x) ~ NA_real_,
                        x %in% valid_range ~ 1,
-                       !(x %in% valid_range) ~ 0,
-                       TRUE~NA_real_)
-    
+                       TRUE ~ 0)
+
     attr(output, 'labels') <- stats::setNames(c(1, 0, NA_real_), lab_str)
-    
+
   } else {
-    
+
     output <-
-      dplyr::case_when(is.na(x) ~ NA_real_,
+      dplyr::case_when(is.na(x) ~ na_val,
                        x %in% valid_range ~ 1,
-                       !(x %in% valid_range) ~ 0,
-                       TRUE ~ na_val)
-    
-    attr(output, 'labels') <- stats::setNames(c(1, 0,  na_val), lab_str)
-    
+                       TRUE ~ 0)
+
+    attr(output, 'labels') <- stats::setNames(c(1, 0, na_val), lab_str)
+
   }
   
   # Set variable labels and make this a labelled double object
@@ -96,4 +94,4 @@ box_it <-
                  range_print,
                  " are selected"))
   return(output)
-} 
+}

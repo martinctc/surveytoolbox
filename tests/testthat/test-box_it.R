@@ -30,16 +30,26 @@ test_that("box_it correctly identifies bottom values", {
 
 test_that("box_it handles NA values correctly", {
   x <- c(1, 2, NA, 9, 10)
+
+  # Missing values use na_val when it is supplied (the default is 99)
   result <- box_it(x, which = "top", number = 2, na_val = 99)
-  
-  # Check that NA is preserved appropriately
-  expect_true(is.na(result[3]) || result[3] == 99)
+  expect_equal(as.numeric(result[3]), 99)
+
+  # Missing values remain NA when na_val is NULL
+  result_na <- box_it(x, which = "top", number = 2, na_val = NULL)
+  expect_true(is.na(result_na[3]))
 })
 
 test_that("box_it replaces specified values with NA", {
   x <- c(1, 2, 99, 9, 10)
-  result <- box_it(x, which = "top", number = 2, replace_na = 99)
-  
-  # The 99 should be treated as NA
+  result <- box_it(
+    x,
+    which = "top",
+    number = 2,
+    replace_na = 99,
+    na_val = NULL
+  )
+
+  # The 99 should be treated as missing
   expect_true(is.na(result[3]))
 })

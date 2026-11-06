@@ -12,5 +12,5 @@ char_to_lab(x)
 \description{
 This function converts the character values into value labels, assigning each
 value an integer. To achieve the same effect whilst prescribing a set of
-value-to-label mapping to the function, please see \code{char_to_var()}.
+value-to-label mappings to the function, please see \code{chr_to_var()}.
 }

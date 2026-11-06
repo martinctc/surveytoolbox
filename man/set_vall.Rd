@@ -33,8 +33,8 @@ df \%>\%
   .$Q2 \%>\% attributes()
 }
 \seealso{
-Other Labels: 
-\code{\link{set_varl}()}
+Other Labels:
+\code{\link[=set_varl]{set_varl()}}
 }
 \concept{Labels}
 \concept{Value labels}

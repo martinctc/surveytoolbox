@@ -18,7 +18,7 @@ copy_df(
 
 \item{row.names}{A logical vector for specifying whether to allow row names. Defaults to FALSE.}
 
-\item{col.names}{A logical vector for specifying whether to allow column names. Defaults to FALSE.}
+\item{col.names}{A logical vector for specifying whether to allow column names. Defaults to TRUE.}
 
 \item{expand}{Add number to manually expand clipboard size}
 

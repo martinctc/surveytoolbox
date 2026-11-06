@@ -3,7 +3,8 @@ Type: Package
 Title: Useful Support Functions for Survey Analysis
 Version: 0.1.0
 Authors@R: 
-    person("Martin", "Chan", , "martinchan53@gmail.com", role = c("aut", "cre"))
+    person("Martin", "Chan", email = "martinchan53@gmail.com",
+           role = c("aut", "cre"))
 URL: https://github.com/martinctc/surveytoolbox/
 BugReports: https://github.com/martinctc/surveytoolbox/issues
 Description: A collection of tools for analysing and visualising survey data 
@@ -17,8 +18,6 @@ Description: A collection of tools for analysing and visualising survey data
 License: GPL-3
 Encoding: UTF-8
 Language: en-GB
-LazyData: true
-RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Imports: 
     dplyr,
@@ -45,3 +44,4 @@ Suggests:
     psych
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.1

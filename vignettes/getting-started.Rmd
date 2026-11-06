@@ -55,7 +55,7 @@ head(customers)
 
 ## Step 1: Add Labels
 
-Good survey analysis starts with proper labeling:
+Good survey analysis starts with proper labelling:
 
 ```{r add_labels}
 # Add variable labels
@@ -78,7 +78,7 @@ customers <- customers %>%
     age_group = set_vall(age_group, c("18-29" = 1, "30-44" = 2, "45-59" = 3, "60+" = 4))
   )
 
-# Check the labeling
+# Check the labelling
 str(customers$satisfaction)
 ```
 
@@ -147,15 +147,15 @@ cat("satisfaction:", attr(customers$satisfaction, "label"), "\n")
 cat("nps:", attr(customers$nps, "label"), "\n")
 cat("gender:", attr(customers$gender, "label"), "\n")
 
-# Show structure of key variables to demonstrate labeling
-print("Structure of Labeled Variables:")
+# Show structure of key variables to demonstrate labelling
+print("Structure of Labelled Variables:")
 str(customers$satisfaction)
 str(customers$gender)
 ```
 
 # Key Functions Reference
 
-## Essential Labeling Functions
+## Essential Labelling Functions
 
 - `set_varl()`: Add descriptive variable labels
 - `set_vall()`: Add value labels to categorical variables
